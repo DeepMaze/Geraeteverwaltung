@@ -1,0 +1,44 @@
+@import "../styles.scss";
+
+.navigation {
+    background-color: $primary-900;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    color: $primary-100;
+    font-size: 20px;
+}
+
+#title {
+    margin-left: 20%;
+}
+
+.flexHalf {
+    width: 50%;
+}
+
+.navigation .flexHalf a {
+    float: left;
+    color: $primary-100;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.navigation .flexHalf a:hover {
+    background-color: $primary-800;
+    color: $primary-200;
+}
+
+.navigation .flexHalf a.active {
+    background-color: $primary-700;
+    color: $primary-300;
+}
+
+#page-content {
+    margin: 20px 15%;
+    background-color: $success-300;
+}

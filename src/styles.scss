@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+$primary-100: #d6faff;
+$primary-200: #adf1ff;
+$primary-300: #84e3ff;
+$primary-400: #66d2ff;
+$primary-500: #33b7ff;
+$primary-600: #258fdb;
+$primary-700: #196cb7;
+$primary-800: #104c93;
+$primary-900: #09367a;
+
+$success-100: #d7fbd1;
+$success-200: #a9f8a5;
+$success-300: #76ec7b;
+$success-400: #51d965;
+$success-500: #20c147;
+$success-600: #17a547;
+$success-700: #108a45;
+$success-800: #0a6f40;
+$success-900: #065c3c;
+
+$info-100: #fdfaea;
+$info-200: #fbf5d5;
+$info-300: #f5eabd;
+$info-400: #ebdca8;
+$info-500: #dfca8a;
+$info-600: #bfa664;
+$info-700: #a08545;
+$info-800: #81652c;
+$info-900: #6b4e1a;
+
+$warning-100: #fefdd0;
+$warning-200: #fdfaa3;
+$warning-300: #fbf674;
+$warning-400: #f8f051;
+$warning-500: #f4e91a;
+$warning-600: #d1c713;
+$warning-700: #afa50d;
+$warning-800: #8d8408;
+$warning-900: #756d04;
+
+$danger-100: #ffe6d9;
+$danger-200: #ffc6b4;
+$danger-300: #ffa08e;
+$danger-400: #ff7c72;
+$danger-500: #ff4447;
+$danger-600: #db3143;
+$danger-700: #b7223e;
+$danger-800: #931538;
+$danger-900: #7a0d35;
+
+// nice color, may be used sometime
+// $testing: #42f0a2;
+
+
+body {
+    background-color: $primary-100;
+    font-family: Arial, sans-serif;
+}

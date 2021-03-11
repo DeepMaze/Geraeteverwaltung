@@ -3,10 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DevicesComponent } from './views/devices/devices.component';
+import { LocationsComponent } from './views/locations/locations.component';
+import { UsersComponent } from './views/users/users.component';
+import { LoginComponent } from './views/login/login.component';
+import { LogoutComponent } from './views/logout/logout.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DevicesComponent,
+    LocationsComponent,
+    UsersComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
