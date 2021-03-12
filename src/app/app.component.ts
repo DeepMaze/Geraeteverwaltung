@@ -8,7 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent {
 
-  title = 'Geraeteverwaltung';
+  public title: string = "";
 
   private routeTitles = [
     { route: "/", title: "Geräteverwaltung" },
