@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'Geraeteverwaltung';
 
   private routeTitles = [
+    { route: "/", title: "Geräteverwaltung" },
     { route: "/devices", title: "Geräteverwaltung" },
     { route: "/locations", title: "Geschäftsstellenverwaltung" },
     { route: "/users", title: "Benutzerverwaltung" },
