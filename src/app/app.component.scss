@@ -14,14 +14,20 @@
 
 #title {
     margin-left: 20%;
-}
-
-.flexHalf {
-    width: 50%;
     display: inherit;
 }
 
-.navigation .flexHalf a {
+#navigationLeft {
+    width: 60%;
+    display: inherit;
+}
+
+#navigationRight {
+    width: 40%;
+    display: inherit;
+}
+
+.navigation #navigationRight a {
     display: block;
     color: $primary-500;
     text-align: center;
@@ -32,17 +38,17 @@
     padding: 10px 20px;
     margin: 0 10px;
     transition: box-shadow 0.4s, background-color 0.4s, transform 0.1s cubic-bezier(0.55, 0, 0.55, 0.2), color 0.5s;
-    transform-origin: 50% 75%;
 }
 
-.navigation .flexHalf a:hover {
+.navigation #navigationRight a:hover {
     color: $primary-900;
     background-color: $primary-200;
     box-shadow: -0px -0px 10px $primary-700 inset;
     transition: box-shadow 0.4s, background-color 0.4s, transform 0.1s cubic-bezier(0.55, 0, 0.55, 0.2), color 0.1s;
+    transform: scale(1.05);
 }
 
-.navigation .flexHalf a.active {
+.navigation #navigationRight a.active {
     color: $primary-900;
     background-color: $primary-300;
     box-shadow: -0px -0px 10px $primary-700 inset;
@@ -52,5 +58,6 @@
 
 #page-content {
     margin: 20px 15%;
-    background-color: $success-300;
+    padding: 10px 20px;
+    // background-color: $success-200;
 }
