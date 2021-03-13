@@ -1,1 +1,22 @@
-<p>locations works!</p>
+<div>
+    <div class="filterWrapper">
+        <input type="text" class="filterInput">
+        <button class="filterButton" (click)="doFilter()">Filtern</button>
+    </div>
+
+    <ng-container *ngFor="let location of locations; let i = index">
+        <div class="collapsibleWrapper">
+            <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
+            <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">More Info</label>
+            <div class="collapsibleContent">
+                <div class="contentTitle">
+                    {{ location.name }}
+                </div>
+                <div class="contentBody">
+                    {{ location.address.street }}
+                    {{ location.address.city }}
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
