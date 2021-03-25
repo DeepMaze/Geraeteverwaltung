@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { AuthenticationService } from "./service/authentication.service";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ export class AppComponent {
   ]
 
   constructor(
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit() {
