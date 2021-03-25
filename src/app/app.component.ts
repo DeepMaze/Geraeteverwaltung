@@ -8,6 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent {
 
+  public currentURL: string = "";
   public title: string = "";
 
   private routeTitles = [
@@ -25,9 +26,10 @@ export class AppComponent {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
         let newTitle = this.routeTitles.find(route => { return route.route === event.url }) || { title: "undefined" };
+        this.currentURL = event.url;
         this.title = newTitle.title;
+        console.log("this.currentURL: ", this.currentURL);
       }
     })
   }
-
 }
