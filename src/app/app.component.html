@@ -1,16 +1,25 @@
-<div class="navigation">
-  <div id="navigationLeft">
-    <span id="title">{{ title }}</span>
-  </div>
+<ng-container *ngIf="this.authService.loggedIn == true; then loggedIn; else notLoggedIn">
+</ng-container>
 
-  <div id="navigationRight">
-    <a id="devices-link" routerLink="/devices" routerLinkActive="active">Geräte</a>
-    <a id="location-link" routerLink="/locations" routerLinkActive="active">Geschäftsstellen</a>
-    <a id="user-link" routerLink="/users" routerLinkActive="active">Benutzer</a>
-    <a id="logout-link" routerLink="/logout" routerLinkActive="active">Abmelden</a>
-  </div>
-</div>
+<ng-template #loggedIn>
+	<div class="navigation">
+		<div id="navigationLeft">
+			<span id="title">{{ title }}</span>
+		</div>
 
-<div id="page-content">
-  <router-outlet></router-outlet>
-</div>
+		<div id="navigationRight">
+			<a id="devices-link" routerLink="/devices" routerLinkActive="active">Geräte</a>
+			<a id="location-link" routerLink="/locations" routerLinkActive="active">Geschäftsstellen</a>
+			<a id="user-link" routerLink="/users" routerLinkActive="active">Benutzer</a>
+			<a id="logout-link" routerLink="/logout" routerLinkActive="active">Abmelden</a>
+		</div>
+	</div>
+
+	<div id="page-content">
+		<router-outlet></router-outlet>
+	</div>
+</ng-template>
+
+<ng-template #notLoggedIn>
+	<router-outlet></router-outlet>
+</ng-template>

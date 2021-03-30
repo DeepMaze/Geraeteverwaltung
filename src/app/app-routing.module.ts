@@ -7,14 +7,15 @@ import { LocationsComponent } from "./views/locations/locations.component";
 import { UsersComponent } from "./views//users/users.component";
 import { LoginComponent } from "./views/login/login.component";
 import { LogoutComponent } from "./views/logout/logout.component";
+import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
-  { path: '*', component: AppComponent },
-  { path: 'devices', component: DevicesComponent },
-  { path: 'locations', component: LocationsComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent },
+  { path: '*', canActivate: [AuthGuard], component: DevicesComponent },
+  { path: 'devices', canActivate: [AuthGuard], component: DevicesComponent },
+  { path: 'locations', canActivate: [AuthGuard], component: LocationsComponent },
+  { path: 'users', canActivate: [AuthGuard], component: UsersComponent },
+  { path: 'login', canActivate: [AuthGuard], component: LoginComponent },
+  { path: 'logout', canActivate: [AuthGuard], component: LogoutComponent },
 ];
 
 @NgModule({
