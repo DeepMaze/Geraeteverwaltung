@@ -12,19 +12,17 @@ export class AuthGuard implements CanActivate {
 
 	constructor(private authService: AuthenticationService, private router: Router) { }
 
-	canActivate(
-		route: ActivatedRouteSnapshot,
-		state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-		var loggedIn = this.authService.checkToken();
+	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+		var isTokenValid = this.authService.checkToken();
 		if (state.url == "/login") {
-			if (loggedIn) { this.router.navigateByUrl("/logout"); }
+			if (this.authService.loggedIn && isTokenValid) { this.router.navigateByUrl("/logout"); }
 			else { return true; }
 		}
 		if (state.url == "/logout") {
-			if (loggedIn) { return true; }
+			if (this.authService.loggedIn) { return true; }
 			else { this.router.navigateByUrl("/devices"); }
 		}
-		return loggedIn;
+		return isTokenValid;
 	}
 
 }

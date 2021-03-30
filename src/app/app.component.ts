@@ -9,7 +9,6 @@ import { AuthenticationService } from "./service/authentication.service";
 })
 export class AppComponent {
 
-  public currentURL: string = "";
   public title: string = "";
 
   private routeTitles = [
@@ -21,16 +20,14 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthenticationService
+    public authService: AuthenticationService
   ) { }
 
   ngOnInit() {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
         let newTitle = this.routeTitles.find(route => { return route.route === event.url }) || { title: "undefined" };
-        this.currentURL = event.url;
         this.title = newTitle.title;
-        console.log("this.currentURL: ", this.currentURL);
       }
     })
   }

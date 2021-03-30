@@ -1,31 +1,31 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Observable, Subject } from "rxjs";
+import { LocalStorageService } from "./local-storage.service";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class AuthenticationService implements OnInit {
 
-  public loggedInObservable: Subject<boolean> = new Subject<boolean>();
-  public loggedIn: boolean = false;
+	public loggedIn: boolean = false;
 
-  constructor() { }
+	constructor(private localStorage: LocalStorageService) { }
 
-  ngOnInit(): void {
-    this.checkLoggedIn().subscribe((result) => { this.loggedIn = result; });
-  }
+	ngOnInit(): void {
+		this.updateLoggedIn();
+	}
 
-  checkLoggedIn(): Observable<boolean> {
-    return new Observable((observer) => {
-      if (localStorage.getItem("token")) {
-        observer.next(true);
-      } else {
-        observer.next(false);
-      }
-    })
-  }
+	updateLoggedIn(): void {
+		this.localStorage.watch("token").subscribe((result) => {
+			// this.loggedIn = result;
+		});
+	}
 
-  checkToken() {
-    return true;
-  }
+	checkToken(): boolean {
+		return true;
+	}
+
+	login(userData: { userName: string, passWord: string }): void {
+		console.log("userName: ", userData.userName);
+		console.log("passWord: ", userData.passWord);
+	}
 }
