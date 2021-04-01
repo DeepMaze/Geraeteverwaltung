@@ -56,7 +56,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.input {
+input {
     padding: 0 15px;
     background-color: $info-200;
     border: 2px solid $info-500;
@@ -64,7 +64,7 @@ body {
     box-shadow: 0 0 2px $info-600 inset;
 }
 
-.input:focus {
+input:focus {
     box-shadow: 0 0 5px $info-700 inset;
 }
 
@@ -74,6 +74,12 @@ body {
     background-color: $primary-200;
     box-shadow: 0 0 2px $primary-600 inset;
     padding: 0 15px;
+    transition: box-shadow 0.1s;
+}
+
+.buttonPrimary:hover {
+    box-shadow: 0 0 5px $primary-600 inset;
+    transition: box-shadow 0.1s;
 }
 
 .buttonPrimary:focus {
@@ -88,6 +94,11 @@ body {
     padding: 0 15px;
 }
 
+.buttonSuccess:hover {
+    box-shadow: 0 0 5px $success-600 inset;
+    transition: box-shadow 0.1s;
+}
+
 .buttonSuccess:focus {
     box-shadow: 0 0 5px $success-700 inset;
 }
@@ -98,6 +109,11 @@ body {
     background-color: $info-200;
     box-shadow: 0 0 2px $info-600 inset;
     padding: 0 15px;
+}
+
+.buttonInfo:hover {
+    box-shadow: 0 0 5px $info-600 inset;
+    transition: box-shadow 0.1s;
 }
 
 .buttonInfo:focus {
@@ -112,6 +128,11 @@ body {
     padding: 0 15px;
 }
 
+.buttonWarning:hover {
+    box-shadow: 0 0 5px $warning-600 inset;
+    transition: box-shadow 0.1s;
+}
+
 .buttonWarning:focus {
     box-shadow: 0 0 5px $warning-700 inset;
 }
@@ -122,6 +143,11 @@ body {
     background-color: $danger-200;
     box-shadow: 0 0 2px $danger-600 inset;
     padding: 0 15px;
+}
+
+.buttonDanger:hover {
+    box-shadow: 0 0 5px $danger-600 inset;
+    transition: box-shadow 0.1s;
 }
 
 .buttonDanger:focus {

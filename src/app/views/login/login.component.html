@@ -1,12 +1,15 @@
 <div class="background">
     <div class="login-wrapper">
-        <label for="userName">Benutzername</label>
-        <input type="text" id="userName" [(ngModel)]="userData.userName">
+        <div class="flex-item" id="top-text"> <span>Login</span> </div>
 
-        <label for="passWord">Passwort</label>
-        <input type="password" id="passWord" [(ngModel)]="userData.passWord">
+        <div class="flex-item"> <label for="userName">Benutzername</label> </div>
+        <div class="flex-item"> <input type="text" id="userName" [(ngModel)]="userData.userName"> </div>
 
-        <button (click)="prepareLogin()">Anmelden</button>
-        <button (click)="prepareLogin(true)">Als Gast anmelden</button>
+        <div class="flex-item"> <label for="passWord">Passwort</label> </div>
+        <div class="flex-item"> <input type="password" id="passWord" [(ngModel)]="userData.passWord"> </div>
+
+        <div class="flex-itemHalf"> <button class="buttonPrimary" (click)="prepareLogin()">Anmelden</button> </div>
+        <div class="flex-itemHalf"> <button class="buttonInfo" (click)="prepareLogin(true)">Als Gast Anmelden</button>
+        </div>
     </div>
 </div>
