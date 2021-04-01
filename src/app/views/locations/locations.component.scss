@@ -1,0 +1,154 @@
+@import "../../../styles.scss";
+
+.filterWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.filterInput {
+    outline: none;
+    margin: 5px;
+    height: 50px;
+    width: 70%;
+    font-size: 16pt;
+}
+
+.filterButton {
+    margin: 5px;
+    height: 54px;
+    font-size: 16pt;
+}
+
+.collapsibleToggle {
+    display: none;
+}
+
+.collapsibleWrapper {
+    margin: 1.2rem 0;
+}
+
+.collapsibleLabel {
+    padding: 1rem;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 7px;
+    background-color: $info-700;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: #ddd;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all 0.25s ease-out;
+}
+
+.collapsibleLabel:hover {
+    color: #fff;
+}
+
+.collapsibleLabel::before {
+    content: " ";
+    display: inline-block;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid currentColor;
+    vertical-align: middle;
+    margin-right: 0.7rem;
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-out;
+}
+
+.collapsibleToggle:checked + .collapsibleLabel::before {
+    transform: rotate(90deg) translateX(-3px);
+}
+
+.collapsibleToggle:checked + .collapsibleLabel + .collapsibleContent {
+    max-height: 350px;
+}
+
+.collapsibleToggle:checked + .collapsibleLabel {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.collapsibleContent {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.25s ease-in-out;
+
+    background-color: $info-100;
+    border-bottom: 1px solid $info-400;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.contentTitle {
+    font-size: 18pt;
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+    margin: 5px 10%;
+    text-align: center;
+}
+
+.contentBody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.contentBody div {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.bodyName {
+    width: 100%;
+}
+
+.contentBody .bodyAddress {
+    flex-wrap: wrap;
+}
+
+.bodyAddress {
+    width: 100%;
+}
+
+.bodyAddress div {
+    width: 100%;
+}
+
+.contentBody div label {
+    margin: 5px;
+    padding: 0 5px;
+    height: 40px;
+    min-width: 60px;
+    font-size: 15pt;
+    line-height: 40px;
+}
+
+.contentBody div input[type="text"] {
+    outline: none;
+    margin: 5px;
+    height: 40px;
+    width: calc(100% - 50px);
+}
+
+.bodyActions button {
+    margin: 5px;
+    padding: 0 15px;
+    height: 50px;
+    font-size: 24px;
+}
+
+.bodyActions button:focus {
+    outline: none;
+}

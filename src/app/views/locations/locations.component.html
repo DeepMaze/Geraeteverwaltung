@@ -1,1 +1,42 @@
-<p>locations works!</p>
+<div>
+    <div class="filterWrapper">
+        <input type="text" class="input filterInput">
+        <button class="buttonInfo filterButton" (click)="doFilter()">Filtern</button>
+    </div>
+
+    <ng-container *ngFor="let location of locations; let i = index">
+        <div class="collapsibleWrapper">
+            <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
+            <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ location.name }}</label>
+            <div class="collapsibleContent">
+                <div class="contentBody">
+                    <div class="bodyName">
+                        <label [attr.for]="'bodyInput_name_' + i" class="bodyInputLabel">Name</label>
+                        <input type="text" [attr.id]="'bodyInput_name_' + i" class="input" [(ngModel)]="location.name">
+                    </div>
+
+                    <div class="bodyAddress">
+                        <div class="addressCity">
+                            <label [attr.for]="'bodyInput_AddressCity_' + i" class="bodyInputLabel">Stadt</label>
+                            <input type="text" [attr.id]="'bodyInput_AddressCity_' + i" class="input"
+                                [(ngModel)]="location.address.city">
+                        </div>
+
+                        <div class="addressStreet">
+                            <label [attr.for]="'bodyInput_AddressStreet_' + i" class="bodyInputLabel">Straße</label>
+                            <input type="text" [attr.id]="'bodyInput_AddressStreet_' + i" class="input"
+                                [(ngModel)]="location.address.street">
+                        </div>
+                    </div>
+
+                    <div class="bodyActions">
+                        <button class="buttonInfo actionCancel" (click)="cancel(i)">Abbrechen</button>
+                        <button class="buttonDanger actionDelete" (click)="deleteDevice(i)">Löschen</button>
+                        <button class="buttonSuccess actionSave" (click)="saveDevice(i)">Speichern</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
