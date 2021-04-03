@@ -17,8 +17,12 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void { }
 
-    prepareLogin(asGuest: boolean = false): void {
-        if (asGuest) { this.authService.login(environment.guestData); }
-        else { this.authService.login(this.userData); }
+    async prepareLogin(asGuest: boolean = false): Promise<void> {
+        try {
+            if (asGuest) { var result = await this.authService.login(environment.guestData); }
+            else { var result = await this.authService.login(this.userData); }
+        } catch (err) {
+            console.log(err);
+        }
     }
 }
