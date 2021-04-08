@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { LocalStorageService } from "./local-storage.service";
 import { ApiService } from "../service/api.service";
@@ -9,22 +9,22 @@ import { UserData } from '../interfaces/user-data';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthenticationService implements OnInit {
+export class AuthenticationService {
 
     public loggedIn: boolean = false;
 
     constructor(
         private localStorage: LocalStorageService,
         private apiService: ApiService
-    ) { }
-
-    ngOnInit(): void {
+    ) {
+        console.log('test');
         this.updateLoggedIn();
     }
 
     updateLoggedIn(): void {
+        console.log('test');
         this.localStorage.watch('token').subscribe((result) => {
-            console.log("result: ", result);
+            console.log("tokenResult: ", result);
             this.loggedIn = !!result;
         });
     }

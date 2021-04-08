@@ -28,7 +28,12 @@ export class LoginComponent implements OnInit {
             console.log(err);
             return;
         }
-        if (result) { this.router.navigateByUrl("/devices"); }
+        console.log("authService.loggedIn: ", this.authService.loggedIn);
+        console.log("result: ", result);
+        if (result) {
+            console.log("now navigate to devices");
+            this.router.navigate(["/devices"]);
+        }
     }
 
     routeTo(routerLink: string): void {
