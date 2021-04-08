@@ -1,0 +1,14 @@
+<div class="background">
+    <div class="login-wrapper">
+        <div class="flex-item" id="top-text"> <span>Benutzer Erstellung</span> </div>
+        <div class="flex-item" id="top-text"> </div>
+        <div class="flex-item"> <label for="userName">Benutzername</label> </div>
+        <div class="flex-item"> <input type="text" id="userName" [(ngModel)]="userData.userName"> </div>
+
+        <div class="flex-item"> <label for="passWord">Passwort</label> </div>
+        <div class="flex-item"> <input type="password" id="passWord" [(ngModel)]="userData.passWord"> </div>
+
+        <div class="flex-item"> <button class="buttonSuccess" (click)="createUser()">Erstellen</button> </div>
+        <div class="flex-item"> <button class="buttonWarning" (click)="routeTo('/login')">Zurück</button>
+        </div>
+    </div>

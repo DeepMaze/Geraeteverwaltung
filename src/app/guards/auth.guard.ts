@@ -10,24 +10,26 @@ import { AuthenticationService } from "../service/authentication.service";
 })
 export class AuthGuard implements CanActivate {
 
-    constructor(private authService: AuthenticationService, private router: Router) { }
+    constructor(
+        private authService: AuthenticationService,
+        private router: Router,
+    ) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        var isTokenValid = this.authService.checkToken();
         if (state.url == "/") {
-            if (!this.authService.loggedIn || !isTokenValid) { this.router.navigateByUrl("/login"); }
+            if (!this.authService.loggedIn || !this.authService.loggedIn) { this.router.navigateByUrl("/login"); }
             else { return true; }
         }
-        if (state.url == "/login") {
-            if (this.authService.loggedIn && isTokenValid) { this.router.navigateByUrl("/logout"); }
+        if (state.url == "/login" || state.url == "/createUser") {
+            if (this.authService.loggedIn && this.authService.loggedIn) { this.router.navigateByUrl("/devices"); }
             else { return true; }
         }
         if (state.url == "/logout") {
             if (this.authService.loggedIn) { return true; }
-            else { this.router.navigateByUrl("/devices"); }
+            else { this.router.navigateByUrl("/login"); }
         }
-        if (isTokenValid) { return true; }
+        if (this.authService.loggedIn) { return true; }
         else { this.router.navigateByUrl("/login"); }
-        return isTokenValid;
+        return this.authService.loggedIn;
     }
 }

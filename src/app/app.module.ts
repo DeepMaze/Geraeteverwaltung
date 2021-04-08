@@ -10,6 +10,7 @@ import { LocationsComponent } from './views/locations/locations.component';
 import { UsersComponent } from './views/users/users.component';
 import { LoginComponent } from './views/login/login.component';
 import { LogoutComponent } from './views/logout/logout.component';
+import { CreateUserComponent } from './views/create-user/create-user.component';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { LogoutComponent } from './views/logout/logout.component';
         UsersComponent,
         LoginComponent,
         LogoutComponent,
+        CreateUserComponent,
     ],
     imports: [
         BrowserModule,

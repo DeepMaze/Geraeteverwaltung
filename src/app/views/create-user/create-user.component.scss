@@ -71,14 +71,14 @@ label {
     font-size: 19pt;
 }
 
-button, a {
+button {
     height: 100%;
     width: 80%;
     margin-left: 50%;
     transform: translate(-50%, 0);
 }
 
-button:focus, a:focus {
+button:focus {
     outline: none;
 }
 
@@ -86,14 +86,4 @@ a {
     text-decoration: none;
     color: black;
     cursor: default;
-    
-}
-
-.linkAsButton {
-    display: block;
-    padding: 10px;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    line-height: 25px;
 }

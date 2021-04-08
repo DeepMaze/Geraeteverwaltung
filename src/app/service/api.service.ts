@@ -11,13 +11,10 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
 
-    constructor(
-        private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient) { }
 
     async login(loginData: LoginData): Promise<UserData> {
-        var httpParams = new HttpParams();
-        httpParams.append('userName', loginData['userName'])
-        httpParams.append('passWord', loginData['passWord'])
+        var httpParams = { userName: loginData.userName, passWord: loginData.passWord };
         try {
             var requestResult: UserData = await <Promise<UserData>>this.httpClient.get(`${environment.apiUrl}/login/login`, { params: httpParams }).toPromise();
         } catch (err) {
@@ -28,11 +25,9 @@ export class ApiService {
     }
 
     async createUser(loginData: LoginData): Promise<boolean> {
-        var httpParams = new HttpParams();
-        httpParams.append('userName', loginData['userName'])
-        httpParams.append('passWord', loginData['passWord'])
+        var httpParams = { userName: loginData.userName, passWord: loginData.passWord };
         try {
-            var requestResult = await <Promise<boolean>>this.httpClient.get(`${environment.apiUrl}/users/createUser`, { params: httpParams }).toPromise();
+            var requestResult = await <Promise<boolean>>this.httpClient.get(`${environment.apiUrl}/user/createUser`, { params: httpParams }).toPromise();
         } catch (err) {
             throw err;
         }

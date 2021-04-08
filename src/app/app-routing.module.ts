@@ -6,6 +6,7 @@ import { LocationsComponent } from "./views/locations/locations.component";
 import { UsersComponent } from "./views//users/users.component";
 import { LoginComponent } from "./views/login/login.component";
 import { LogoutComponent } from "./views/logout/logout.component";
+import { CreateUserComponent } from "./views/create-user/create-user.component";
 import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: 'users', canActivate: [AuthGuard], component: UsersComponent },
     { path: 'login', canActivate: [AuthGuard], component: LoginComponent },
     { path: 'logout', canActivate: [AuthGuard], component: LogoutComponent },
+    { path: 'createUser', canActivate: [AuthGuard], component: CreateUserComponent },
 ];
 
 @NgModule({

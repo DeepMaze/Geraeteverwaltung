@@ -8,8 +8,16 @@
         <div class="flex-item"> <label for="passWord">Passwort</label> </div>
         <div class="flex-item"> <input type="password" id="passWord" [(ngModel)]="userData.passWord"> </div>
 
+        <br>
+        <br>
+
         <div class="flex-item"> <button class="buttonPrimary" (click)="prepareLogin()">Anmelden</button> </div>
         <div class="flex-item"> <button class="buttonInfo" (click)="prepareLogin(true)">Als Gast Anmelden</button>
+        </div>
+
+        <br>
+
+        <div class="flex-item"> <button class="buttonWarning" (click)="routeTo('/createUser')">Benutzer erstellen</button>
         </div>
     </div>
 </div>
