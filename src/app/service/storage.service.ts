@@ -13,11 +13,16 @@ export class StorageService {
     }
 
     private prepareStorage(key: string): any {
+        console.log('---- PREPARE STORAGE -- START');
+        console.log('key: ', key);
         var storageItem: string = this.storage.getItem(key) || '';
+        console.log('storageItem: ', storageItem);
         if (!storageItem || storageItem == 'undefined') {
             storageItem = '';
             this.storage.setItem(key, storageItem);
         }
+        console.log('storageItem: ', storageItem);
+        console.log('---- PREPARE STORAGE -- END');
         var doesKeyExist: boolean = this.subjects.has(key);
         if (!doesKeyExist) {
             this.subjects.set(key, new BehaviorSubject<string>(storageItem));
@@ -62,18 +67,5 @@ export class StorageService {
     public clear(): void {
         this.subjects.clear();
         this.storage.clear();
-    }
-
-    public async printStorage(): Promise<void> {
-        console.log('--------------- START: PRINT STORAGE');
-        console.log('Size: ', this.subjects.size);
-        if (this.subjects.size != 0) {
-            for (let key of this.subjects.keys()) {
-                this.subjects.get(key)?.subscribe((result: string) => {
-                    console.log(`${key}: `, result);
-                });
-            }
-        }
-        console.log('--------------- END');
     }
 }

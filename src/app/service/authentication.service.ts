@@ -29,17 +29,19 @@ export class AuthenticationService {
     }
 
     async login(loginData: LoginData): Promise<boolean> {
+
         try {
-            var result = await this.apiService.login(loginData);
+            var loginResult: UserData = await this.apiService.login(loginData).toPromise();
         } catch (err) {
             throw err;
         }
-        if (!result) { return false; }
-        this.localStorage.set('userID', result.userID);
-        this.localStorage.set('userName', result.userName);
-        this.localStorage.set('token', result.token);
-
+        if (!loginResult) {
+            return false;
+        }
+        this.localStorage.set('userID', loginResult.userID);
+        this.localStorage.set('userName', loginResult.userName);
+        this.localStorage.set('token', loginResult.token);
         this.localStorage.printStorage();
-        return true;
+        return !!loginResult;
     }
 }
