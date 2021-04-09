@@ -23,21 +23,17 @@ export class LoginComponent implements OnInit {
 
     async prepareLogin(asGuest: boolean = false): Promise<void> {
         try {
-            var result = await this.authService.login(asGuest ? environment.guestData : this.userData);
+            var result: any = await this.authService.login(asGuest ? environment.guestData : this.userData);
         } catch (err) {
             console.log(err);
-            return;
+            window.alert('Es gab ein Problem beim erstellen eines Benutzers!');
         }
-        console.log("authService.loggedIn: ", this.authService.loggedIn);
-        console.log("result: ", result);
         if (result) {
-            console.log("now navigate to devices");
-            this.router.navigate(["/devices"]);
+            this.router.navigateByUrl("/devices");
         }
     }
 
     routeTo(routerLink: string): void {
         this.router.navigateByUrl(routerLink);
-        // this.router.navigate([routerLink]);
     }
 }

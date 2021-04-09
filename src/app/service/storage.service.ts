@@ -13,16 +13,11 @@ export class StorageService {
     }
 
     private prepareStorage(key: string): any {
-        console.log('---- PREPARE STORAGE -- START');
-        console.log('key: ', key);
         var storageItem: string = this.storage.getItem(key) || '';
-        console.log('storageItem: ', storageItem);
         if (!storageItem || storageItem == 'undefined') {
             storageItem = '';
             this.storage.setItem(key, storageItem);
         }
-        console.log('storageItem: ', storageItem);
-        console.log('---- PREPARE STORAGE -- END');
         var doesKeyExist: boolean = this.subjects.has(key);
         if (!doesKeyExist) {
             this.subjects.set(key, new BehaviorSubject<string>(storageItem));

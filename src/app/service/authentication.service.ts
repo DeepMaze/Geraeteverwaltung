@@ -22,14 +22,11 @@ export class AuthenticationService {
 
     updateLoggedIn(): void {
         this.localStorage.watch('token').subscribe((result) => {
-            console.log("tokenResult: ", result);
             this.loggedIn = !!result;
-            console.log("loggedIn: ", this.loggedIn);
         });
     }
 
     async login(loginData: LoginData): Promise<boolean> {
-
         try {
             var loginResult: UserData = await this.apiService.login(loginData).toPromise();
         } catch (err) {
@@ -41,7 +38,6 @@ export class AuthenticationService {
         this.localStorage.set('userID', loginResult.userID);
         this.localStorage.set('userName', loginResult.userName);
         this.localStorage.set('token', loginResult.token);
-        this.localStorage.printStorage();
         return !!loginResult;
     }
 }

@@ -18,11 +18,12 @@ export class CreateUserComponent implements OnInit {
 
     ngOnInit(): void { }
 
-    async createUser(): Promise<void> {
+    createUser(): void {
         try {
-            var result = await this.apiService.createUser(this.userData);
+            this.apiService.createUser(this.userData);
         } catch (err) {
             console.log(err);
+            window.alert('Es gab ein Problem beim erstellen eines Benutzers!');
         }
     }
 
