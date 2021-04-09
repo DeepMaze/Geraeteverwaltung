@@ -12,40 +12,68 @@ export class StorageService {
         this.storage = storage;
     }
 
-    watch(key: string): Observable<any> {
-        var doesKeyExist = this.subjects.has(key);
-        var storageItem: string = this.storage.getItem(key) || "";
-        if (storageItem == 'undefined') { storageItem = ''; }
-        if (storageItem && typeof storageItem == 'string') { storageItem = JSON.parse(storageItem); }
-        if (!doesKeyExist) { this.subjects.set(key, new BehaviorSubject<string>(storageItem)); }
-        var subjectItem = this.subjects.get(key) || new BehaviorSubject<string>(storageItem);
-        if (subjectItem) { subjectItem.next(storageItem); }
+    private prepareStorage(key: string): any {
+        var storageItem: string = this.storage.getItem(key) || '';
+        if (!storageItem || storageItem == 'undefined') {
+            storageItem = '';
+            this.storage.setItem(key, storageItem);
+        }
+        var doesKeyExist: boolean = this.subjects.has(key);
+        if (!doesKeyExist) {
+            this.subjects.set(key, new BehaviorSubject<string>(storageItem));
+        }
+        var subjectItem: BehaviorSubject<string> = this.subjects.get(key) || new BehaviorSubject<string>(storageItem);
+        subjectItem.next(storageItem);
+        return { storageItem, subjectItem };
+    }
+
+    public watch(key: string): Observable<any> {
+        var { subjectItem } = this.prepareStorage(key);
         return subjectItem?.asObservable();
     }
 
-    get(key: string): any {
-        var storageItem: string = this.storage.getItem(key) || "";
-        if (storageItem && typeof storageItem == 'string') { storageItem = JSON.parse(storageItem); }
+    public get(key: string): string {
+        var { storageItem } = this.prepareStorage(key);
         return storageItem;
     }
 
-    set(key: string, value: any) {
-        this.storage.setItem(key, JSON.stringify(value));
-        var doesKeyExist = this.subjects.has(key);
-        if (!doesKeyExist) { this.subjects.set(key, new BehaviorSubject<string>(value)); }
-        var subjectItem = this.subjects.get(key);
-        if (subjectItem) { subjectItem.next(value); }
+    public set(key: string, value: any): void {
+        if (typeof value == 'object') {
+            value = JSON.stringify(value);
+        }
+        this.storage.setItem(key, value);
+        var doesKeyExist: boolean = this.subjects.has(key);
+        if (!doesKeyExist) {
+            this.subjects.set(key, new BehaviorSubject<string>(value));
+        }
+        var subjectItem: BehaviorSubject<string> = this.subjects.get(key) || new BehaviorSubject<string>(value);
+        subjectItem.next(value);
     }
 
-    remove(key: string) {
-        var doesKeyExist = this.subjects.has(key);
-        if (!doesKeyExist) { this.subjects.get(key)?.complete(); }
+    public remove(key: string): void {
+        var doesKeyExist: boolean = this.subjects.has(key);
+        if (!doesKeyExist) {
+            this.subjects.get(key)?.complete();
+        }
         this.subjects.delete(key);
         this.storage.removeItem(key);
     }
 
-    clear() {
+    public clear(): void {
         this.subjects.clear();
         this.storage.clear();
+    }
+
+    public async printStorage(): Promise<void> {
+        console.log('--------------- START: PRINT STORAGE');
+        console.log('Size: ', this.subjects.size);
+        if (this.subjects.size != 0) {
+            for (let key of this.subjects.keys()) {
+                this.subjects.get(key)?.subscribe((result: string) => {
+                    console.log(`${key}: `, result);
+                });
+            }
+        }
+        console.log('--------------- END');
     }
 }

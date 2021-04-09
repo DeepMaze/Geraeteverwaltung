@@ -17,15 +17,14 @@ export class AuthenticationService {
         private localStorage: LocalStorageService,
         private apiService: ApiService
     ) {
-        console.log('test');
         this.updateLoggedIn();
     }
 
     updateLoggedIn(): void {
-        console.log('test');
         this.localStorage.watch('token').subscribe((result) => {
             console.log("tokenResult: ", result);
             this.loggedIn = !!result;
+            console.log("loggedIn: ", this.loggedIn);
         });
     }
 
@@ -39,6 +38,8 @@ export class AuthenticationService {
         this.localStorage.set('userID', result.userID);
         this.localStorage.set('userName', result.userName);
         this.localStorage.set('token', result.token);
+
+        this.localStorage.printStorage();
         return true;
     }
 }
