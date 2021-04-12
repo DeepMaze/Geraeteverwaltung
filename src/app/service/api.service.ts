@@ -100,7 +100,7 @@ export class ApiService {
             device: JSON.stringify(device)
         };
         try {
-            return this.httpClient.patch(`${environment.apiUrl}/device/deleteDevice`, { params: httpParams });
+            return this.httpClient.patch(`${environment.apiUrl}/device/updateDevice`, { params: httpParams });
         } catch (err) {
             throw err;
         }

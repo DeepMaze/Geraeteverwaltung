@@ -42,8 +42,8 @@ export class DevicesComponent implements OnInit {
         this.apiService.getDeviceList().toPromise()
             .then((deviceList: Array<Device>) => {
                 if (deviceList && deviceList.length != 0) {
-                    this.deviceList = deviceList;
-                    this.mutableFilteredDeviceList = deviceList;
+                    this.deviceList = JSON.parse(JSON.stringify(deviceList));
+                    this.mutableFilteredDeviceList = JSON.parse(JSON.stringify(deviceList));
                 }
             })
             .catch((err: any) => {
@@ -74,6 +74,25 @@ export class DevicesComponent implements OnInit {
             })
             .catch((err: any) => {
                 window.alert('Gerät konnte nicht erstellt werden!')
+            });
+    }
+
+    public updateDevice(deviceID: number): void {
+        var device: Device = this.mutableFilteredDeviceList.filter((value) => {
+            return value.ID == deviceID;
+        })[0];
+        if (device.RentStart != '') {
+            device.RentStart = this.converDateToYMD(new Date(device.RentStart));
+        }
+        if (device.ExpectedReturn != '') {
+            device.ExpectedReturn = this.converDateToYMD(new Date(device.ExpectedReturn));
+        }
+        this.apiService.updateDevice(device).toPromise()
+            .then((result: any) => {
+                window.alert('Änderungen wurde gespeichert!');
+            })
+            .catch((err: any) => {
+                window.alert('Änderungen konnten nicht gespeichert werden!')
             });
     }
 
@@ -114,9 +133,10 @@ export class DevicesComponent implements OnInit {
     }
 
     public cancel(index: number) {
-        this.mutableFilteredDeviceList[index] = this.deviceList.filter((value: Device) => {
+        var deviceTEMP = this.deviceList.filter((value: Device) => {
             return value.ID == this.mutableFilteredDeviceList[index].ID;
         })[0];
+        this.mutableFilteredDeviceList[index] = JSON.parse(JSON.stringify(deviceTEMP));
     }
 
     public deleteDevice(deviceID: number): void {
@@ -132,19 +152,6 @@ export class DevicesComponent implements OnInit {
             })
             .catch((err: any) => {
                 window.alert('Gerät konnte nicht gelöscht werden!')
-            });
-    }
-
-    public updateDevice(deviceID: number): void {
-        var device: Device = this.mutableFilteredDeviceList.filter((value) => {
-            return value.ID == deviceID;
-        })[0];
-        this.apiService.updateDevice(device).toPromise()
-            .then((result: any) => {
-                window.alert('Änderungen wurde gespeichert!');
-            })
-            .catch((err: any) => {
-                window.alert('Änderungen konnten nicht gespeichert werden!')
             });
     }
 }

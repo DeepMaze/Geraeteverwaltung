@@ -22,7 +22,7 @@
                         <div class="contentBody">
                             <div class="body-id">
                                 <label [attr.for]="'ID' + i" class="bodyInputLabel">ID</label>
-                                <input type="text" [attr.id]="'ID' + i" class="input" [(ngModel)]="device.ID" readonly>
+                                <input type="text" [attr.id]="'ID' + i" class="input" [ngModel]="device.ID" disabled>
                             </div>
 
                             <div class="body-label">
