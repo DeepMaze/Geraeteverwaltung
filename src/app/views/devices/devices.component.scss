@@ -1,75 +1,110 @@
 @import "../../../styles.scss";
 
-#filterContainer {
-    max-width: 100%;
-    padding: 5px;
-    margin: 5px;
-    // background-color: #dfdfdf;
+.filterWrapper {
+    display: flex;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    display: flex;
 }
 
-#filterInput {
-    background-color: $primary-100;
+.filterInput {
+    outline: none;
+    margin: 5px;
+    height: 50px;
     width: 70%;
-    height: 40px;
-    border: 2px solid $primary-400;
-    border-radius: 30px;
+    font-size: 16pt;
+}
+
+.filterButton {
+    margin: 5px;
+    height: 54px;
+    font-size: 16pt;
+}
+
+.createDeviceButton {
+    margin: 5px;
+    height: 54px;
+    font-size: 16pt;
     text-decoration: none;
-    font-size: 20px;
+    line-height: 54px;
+    color: black;
+}
+
+.actionCancel {
+    margin: 5px;
     padding: 0 15px;
-    box-shadow: -0px -0px 10px $primary-300 inset;
-    transition-delay: box-shadow 0.1s;
-    transition: box-shadow 0.2s;
-}
-
-#filterInput:focus {
-    outline: none;
-    background-color: $primary-100;
-    box-shadow: -0px -0px 10px $primary-500 inset;
-    transition-delay: box-shadow 0.1s;
-    transition: box-shadow 0.2s;
-}
-
-#filterButton {
-    outline: none;
-    border: none;
-    background-color: white;
+    height: 50px;
+    font-size: 24px;
     text-decoration: none;
-    font-size: 20px;
-    padding: 10px 10px;
-    margin: 0 0 0 20px;
-    background-color: $primary-100;
-    box-shadow: -0px -0px 10px $primary-500 inset;
-    border-radius: 20px;
-    transition-delay: box-shadow 0.1s;
+    line-height: 50px;
+    color: black;
 }
 
-input[type="checkbox"] {
+.actionSave {
+    margin: 5px;
+    padding: 0 15px;
+    height: 50px;
+    font-size: 24px;
+    text-decoration: none;
+    line-height: 50px;
+    color: black;
+}
+
+.scrollWrapper {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 80vh;
+    padding-right: 15px;
+}
+
+.scrollWrapper::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px $info-500;
+    border-radius: 10px;
+    background-color: $info-300;
+}
+
+.scrollWrapper::-webkit-scrollbar {
+    width: 12px;
+    background-color: $warning-500;
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px $info-700;
+    background-color: $info-400;
+}
+
+.collapsibleToggle {
     display: none;
 }
-.wrap-collabsible {
+
+.collapsibleWrapper {
     margin: 1.2rem 0;
 }
-.lbl-toggle {
+
+.collapsibleLabel {
+    padding: 1rem;
     display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 7px;
+    background-color: $info-700;
     font-weight: bold;
     font-family: monospace;
     font-size: 1.2rem;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     text-align: center;
-    padding: 1rem;
     color: #ddd;
-    background: #0069ff;
-    cursor: pointer;
-    border-radius: 7px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     transition: all 0.25s ease-out;
 }
-.lbl-toggle:hover {
+
+.collapsibleLabel:hover {
     color: #fff;
 }
-.lbl-toggle::before {
+
+.collapsibleLabel::before {
     content: " ";
     display: inline-block;
     border-top: 5px solid transparent;
@@ -80,28 +115,135 @@ input[type="checkbox"] {
     transform: translateY(-2px);
     transition: transform 0.2s ease-out;
 }
-.toggle:checked + .lbl-toggle::before {
+
+.collapsibleToggle:checked + .collapsibleLabel::before {
     transform: rotate(90deg) translateX(-3px);
 }
-.collapsible-content {
-    max-height: 0px;
-    overflow: hidden;
-    transition: max-height 0.25s ease-in-out;
+
+.collapsibleToggle:checked + .collapsibleLabel + .collapsibleContent {
+    min-height: 620px;
 }
-.toggle:checked + .lbl-toggle + .collapsible-content {
-    max-height: 350px;
-}
-.toggle:checked + .lbl-toggle {
+
+.collapsibleToggle:checked + .collapsibleLabel {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
-.collapsible-content .content-inner {
-    background: rgba(0, 105, 255, 0.2);
-    border-bottom: 1px solid rgba(0, 105, 255, 0.45);
+
+.collapsibleContent {
+    max-height: 0px;
+    overflow: auto;
+    transition: max-height 0.25s ease-in-out;
+
+    background-color: $info-100;
+    border-bottom: 1px solid $info-400;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
+}
+
+.contentTitle {
+    font-size: 18pt;
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+    margin: 5px 10%;
+    text-align: center;
+}
+
+.contentBody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     padding: 0.5rem 1rem;
 }
-.collapsible-content p {
-    margin-bottom: 0;
+
+.contentBody div {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
+.contentBody div label {
+    margin: 5px;
+    padding: 0 5px;
+    height: 40px;
+    width: 230px;
+    font-size: 15pt;
+    line-height: 40px;
+}
+
+.contentBody div input {
+    outline: none;
+    margin: 5px;
+    height: 40px;
+    width: calc(100% - 230px);
+}
+
+.bodyActions button {
+    margin: 5px;
+    padding: 0 15px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.bodyActions button:focus {
+    outline: none;
+}
+
+//
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 50%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+.popup .close:hover {
+    color: #06d85f;
+}
+.popup .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+#popUpSave {
+    height: 54px;
 }

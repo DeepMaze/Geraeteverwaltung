@@ -54,6 +54,7 @@ $danger-900: #7a0d35;
 body {
     background-color: $primary-100;
     font-family: Arial, sans-serif;
+    overflow: hidden;
 }
 
 input {
@@ -66,6 +67,14 @@ input {
 
 input:focus {
     box-shadow: 0 0 5px $info-700 inset;
+}
+
+button {
+    outline: none;
+}
+
+button:focus {
+    outline: none;
 }
 
 .buttonPrimary {

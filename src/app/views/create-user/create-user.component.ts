@@ -22,7 +22,6 @@ export class CreateUserComponent implements OnInit {
         try {
             this.apiService.createUser(this.userData);
         } catch (err) {
-            console.log(err);
             window.alert('Es gab ein Problem beim erstellen eines Benutzers!');
         }
     }

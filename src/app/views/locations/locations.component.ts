@@ -23,8 +23,8 @@ export class LocationsComponent implements OnInit {
 
 	cancel(index: number) { }
 
-	deleteDevice(index: number): void { }
+	deleteLocation(index: number): void { }
 
-	saveDevice(index: number): void { }
+	saveLocation(index: number): void { }
 
 }

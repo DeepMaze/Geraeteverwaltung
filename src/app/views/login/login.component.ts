@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
         try {
             var result: any = await this.authService.login(asGuest ? environment.guestData : this.userData);
         } catch (err) {
-            console.log(err);
             window.alert('Es gab ein Problem beim erstellen eines Benutzers!');
         }
         if (result) {
