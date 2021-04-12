@@ -31,4 +31,9 @@ export class AppComponent {
             }
         })
     }
+
+    public logout(): void {
+        console.log("logout");
+        this.authService.logout();
+    }
 }

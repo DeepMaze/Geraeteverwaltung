@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LocalStorageService } from "./local-storage.service";
 import { ApiService } from "../service/api.service";
@@ -14,19 +15,20 @@ export class AuthenticationService {
     public loggedIn: boolean = false;
 
     constructor(
+        private router: Router,
         private localStorage: LocalStorageService,
         private apiService: ApiService
     ) {
         this.updateLoggedIn();
     }
 
-    updateLoggedIn(): void {
+    private updateLoggedIn(): void {
         this.localStorage.watch('token').subscribe((result) => {
             this.loggedIn = !!result;
         });
     }
 
-    async login(loginData: LoginData): Promise<boolean> {
+    public async login(loginData: LoginData): Promise<boolean> {
         try {
             var loginResult: UserData = await this.apiService.login(loginData).toPromise();
         } catch (err) {
@@ -39,5 +41,13 @@ export class AuthenticationService {
         this.localStorage.set('userName', loginResult.userName);
         this.localStorage.set('token', loginResult.token);
         return !!loginResult;
+    }
+
+    public logout(): void {
+        this.localStorage.remove('userID');
+        this.localStorage.remove('userName');
+        this.localStorage.remove('token');
+        this.router.navigateByUrl('/login');
+
     }
 }
