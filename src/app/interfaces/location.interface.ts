@@ -1,6 +1,6 @@
 export interface Location {
     ID: number,
-    label: string,
+    Label: string,
     DescriptiveInformation: string,
     Address: {
         Postalcode: string,

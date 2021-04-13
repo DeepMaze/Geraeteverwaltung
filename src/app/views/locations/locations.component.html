@@ -2,7 +2,7 @@
     <div class="filterWrapper">
         <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
             (keyup)="prepareFilter($event)">
-        <a class="buttonPrimary createLocationButton" href="#popup1">Gerät hinzufügen</a>
+        <a class="buttonPrimary createLocationButton" href="#popup1">Standort hinzufügen</a>
     </div>
 
     <ng-container *ngIf="mutableFilteredLocationList.length == 0">
@@ -43,19 +43,19 @@
                             <div>
                                 <label [attr.for]="'postalcode' + i" class="bodyInputLabel">PLZ</label>
                                 <input type="text" [attr.id]="'postalcode' + i" class="input"
-                                    [(ngModel)]="location.address.postalcode">
+                                    [(ngModel)]="location.Address.Postalcode">
                             </div>
 
                             <div>
                                 <label [attr.for]="'city' + i" class="bodyInputLabel">Stadt</label>
                                 <input type="text" [attr.id]="'city' + i" class="input"
-                                    [(ngModel)]="location.address.city">
+                                    [(ngModel)]="location.Address.City">
                             </div>
 
                             <div>
                                 <label [attr.for]="'street' + i" class="bodyInputLabel">Straße</label>
                                 <input type="text" [attr.id]="'street' + i" class="input"
-                                    [(ngModel)]="location.address.street">
+                                    [(ngModel)]="location.Address.Street">
                             </div>
 
                             <div class="bodyActions">
@@ -97,17 +97,17 @@
 
                 <div>
                     <label for="postalcode" class="bodyInputLabel">PLZ</label>
-                    <input type="text" id="postalcode" class="input" [(ngModel)]="newLocation.address.postalcode">
+                    <input type="text" id="postalcode" class="input" [(ngModel)]="newLocation.Address.Postalcode">
                 </div>
 
                 <div>
                     <label for="city" class="bodyInputLabel">Stadt</label>
-                    <input type="text" id="city" class="input" [(ngModel)]="newLocation.address.city">
+                    <input type="text" id="city" class="input" [(ngModel)]="newLocation.Address.City">
                 </div>
 
                 <div>
                     <label for="street" class="bodyInputLabel">Straße</label>
-                    <input type="text" id="street" class="input" [(ngModel)]="newLocation.address.street">
+                    <input type="text" id="street" class="input" [(ngModel)]="newLocation.Address.Street">
                 </div>
 
                 <div class="bodyActions">

@@ -27,7 +27,7 @@ export class LocationsComponent implements OnInit {
     private clearLocation(): Location {
         return {
             ID: 0,
-            label: '',
+            Label: '',
             DescriptiveInformation: '',
             Address: {
                 Postalcode: '',

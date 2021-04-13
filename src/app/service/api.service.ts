@@ -5,8 +5,9 @@ import { Device } from '../interfaces/device.interface';
 import { LoginData } from '../interfaces/login-data';
 import { UserData } from '../interfaces/user-data';
 import { environment } from 'src/environments/environment';
-import { observable, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
+import { Location } from '../interfaces/location.interface';
 
 @Injectable({
     providedIn: 'root'
