@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from "./local-storage.service";
 import { ApiService } from "../service/api.service";
 
-import { LoginData } from '../interfaces/login-data';
-import { UserData } from '../interfaces/user-data';
+import { LoginData } from '../interfaces/login-data.interface';
+import { UserData } from '../interfaces/user-data.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -47,7 +47,6 @@ export class AuthenticationService {
         this.localStorage.remove('userID');
         this.localStorage.remove('userName');
         this.localStorage.remove('token');
-        this.router.navigateByUrl('/login');
-
+        window.location.reload();
     }
 }

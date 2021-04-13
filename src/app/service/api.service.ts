@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Device } from '../interfaces/device.interface';
-import { LoginData } from '../interfaces/login-data';
-import { UserData } from '../interfaces/user-data';
+import { LoginData } from '../interfaces/login-data.interface';
+import { UserData } from '../interfaces/user-data.interface';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { Location } from '../interfaces/location.interface';
+import { Person } from '../interfaces/person.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -174,6 +175,72 @@ export class ApiService {
         };
         try {
             return this.httpClient.patch(`${environment.apiUrl}/location/updateLocation`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    // Person API calls
+
+    public getPersonList(): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID')
+        };
+        try {
+            return this.httpClient.get(`${environment.apiUrl}/person/getPersonList`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    public createPerson(person: Person): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID'),
+            person: JSON.stringify(person)
+        };
+        try {
+            return this.httpClient.post(`${environment.apiUrl}/person/createPerson`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    public getPersonID(person: Person): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID'),
+            person: JSON.stringify(person)
+        };
+        try {
+            return this.httpClient.get(`${environment.apiUrl}/person/getPersonID`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    public deletePerson(personID: string): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID'),
+            personID: personID
+        };
+        try {
+            return this.httpClient.delete(`${environment.apiUrl}/person/deletePerson`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    public updatePerson(person: Person): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID'),
+            person: JSON.stringify(person)
+        };
+        try {
+            return this.httpClient.patch(`${environment.apiUrl}/person/updatePerson`, { params: httpParams });
         } catch (err) {
             throw err;
         }

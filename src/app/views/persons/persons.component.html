@@ -1,0 +1,90 @@
+<div>
+    <div class="filterWrapper">
+        <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
+            (keyup)="prepareFilter($event)">
+        <a class="buttonPrimary createPersonButton" href="#popup1">Standort hinzufügen</a>
+    </div>
+
+    <ng-container *ngIf="mutableFilteredPersonList.length == 0">
+        <div class="body">
+            Es wurden keine Standorte gefunden!
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="mutableFilteredPersonList.length != 0">
+        <div class="scrollWrapper">
+            <ng-container *ngFor="let person of mutableFilteredPersonList; let i = index">
+                <div class="collapsibleWrapper">
+                    <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
+                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ person.Firstname + ' ' +
+                        person.LastName }}</label>
+                    <div class="collapsibleContent">
+                        <div class="contentBody">
+                            <div class="body-id">
+                                <label [attr.for]="'ID' + i" class="bodyInputLabel">ID</label>
+                                <input type="text" [attr.id]="'ID' + i" class="input" [ngModel]="person.ID" disabled>
+                            </div>
+
+                            <div>
+                                <label [attr.for]="'firstName' + i" class="bodyInputLabel">Vorname</label>
+                                <input type="text" [attr.id]="'firstName' + i" class="input"
+                                    [(ngModel)]="person.FirstName">
+                            </div>
+
+                            <div>
+                                <label [attr.for]="'lastName' + i" class="bodyInputLabel">Informationen</label>
+                                <input type="text" [attr.id]="'lastName' + i" class="input"
+                                    [(ngModel)]="person.LastName">
+                            </div>
+
+                            <div>
+                                <label [attr.for]="'company' + i" class="bodyInputLabel">Firma</label>
+                                <input type="text" [attr.id]="'company' + i" class="input" [(ngModel)]="person.Company">
+                            </div>
+
+                            <div class="bodyActions">
+                                <button class="buttonInfo actionCancel" (click)="cancel(i)">Abbrechen</button>
+                                <button class="buttonDanger actionDelete"
+                                    (click)="deletePerson(person.ID)">Löschen</button>
+                                <button class="buttonSuccess actionSave"
+                                    (click)="updatePerson(person.ID)">Speichern</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>
+
+
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <h2>Neue Person erstellen</h2>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+            <div class="contentBody">
+                <div>
+                    <label for="firstName" class="bodyInputLabel">Vorname</label>
+                    <input type="text" id="firstName" class="input" [(ngModel)]="newPerson.FirstName">
+                </div>
+
+                <div>
+                    <label for="lastName" class="bodyInputLabel">Name</label>
+                    <input type="text" id="lastName" class="input" [(ngModel)]="newPerson.LastName">
+                </div>
+
+                <div>
+                    <label for="company" class="bodyInputLabel">Firma</label>
+                    <input type="text" id="company" class="input" [(ngModel)]="newPerson.Company">
+                </div>
+
+                <div class="bodyActions">
+                    <a class="buttonInfo actionCancel" href="#">Abbrechen</a>
+                    <a class="buttonSuccess actionSave" href="#" id="popUpSave"
+                        (click)="createPerson(newPerson)">Speichern</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
