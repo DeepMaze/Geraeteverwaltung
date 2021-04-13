@@ -18,6 +18,8 @@ export class ApiService {
         private localStorage: LocalStorageService
     ) { }
 
+    // Login API calls
+
     public login(loginData: LoginData): Observable<any> {
         var httpParams = {
             userName: loginData.userName,
@@ -30,6 +32,8 @@ export class ApiService {
         }
     }
 
+    // User API calls
+
     public createUser(loginData: LoginData): Observable<any> {
         var httpParams = {
             userName: loginData.userName,
@@ -41,6 +45,8 @@ export class ApiService {
             throw err;
         }
     }
+
+    // Device API calls
 
     public getDeviceList(): Observable<any> {
         var httpParams = {
@@ -101,6 +107,72 @@ export class ApiService {
         };
         try {
             return this.httpClient.patch(`${environment.apiUrl}/device/updateDevice`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    // Location API calls
+
+    public getLocationList(): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID')
+        };
+        try {
+            return this.httpClient.get(`${environment.apiUrl}/location/getLocationList`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    public createLocation(location: Location): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID'),
+            location: JSON.stringify(location)
+        };
+        try {
+            return this.httpClient.post(`${environment.apiUrl}/location/createLocation`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    public getLocationID(location: Location): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID'),
+            location: JSON.stringify(location)
+        };
+        try {
+            return this.httpClient.get(`${environment.apiUrl}/location/getLocationID`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    public deleteLocation(locationID: string): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID'),
+            locationID: locationID
+        };
+        try {
+            return this.httpClient.delete(`${environment.apiUrl}/location/deleteLocation`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    public updateLocation(location: Location): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID'),
+            location: JSON.stringify(location)
+        };
+        try {
+            return this.httpClient.patch(`${environment.apiUrl}/location/updateLocation`, { params: httpParams });
         } catch (err) {
             throw err;
         }

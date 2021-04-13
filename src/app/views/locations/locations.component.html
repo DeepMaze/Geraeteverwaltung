@@ -1,42 +1,121 @@
 <div>
     <div class="filterWrapper">
-        <input type="text" class="input filterInput">
-        <button class="buttonInfo filterButton" (click)="doFilter()">Filtern</button>
+        <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
+            (keyup)="prepareFilter($event)">
+        <a class="buttonPrimary createLocationButton" href="#popup1">Gerät hinzufügen</a>
     </div>
 
-    <ng-container *ngFor="let location of locations; let i = index">
-        <div class="collapsibleWrapper">
-            <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
-            <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ location.name }}</label>
-            <div class="collapsibleContent">
-                <div class="contentBody">
-                    <div class="bodyName">
-                        <label [attr.for]="'bodyInput_name_' + i" class="bodyInputLabel">Name</label>
-                        <input type="text" [attr.id]="'bodyInput_name_' + i" class="input" [(ngModel)]="location.name">
-                    </div>
+    <ng-container *ngIf="mutableFilteredLocationList.length == 0">
+        <div class="body">
+            Es wurden keine Standorte gefunden!
+        </div>
+    </ng-container>
 
-                    <div class="bodyAddress">
-                        <div class="addressCity">
-                            <label [attr.for]="'bodyInput_AddressCity_' + i" class="bodyInputLabel">Stadt</label>
-                            <input type="text" [attr.id]="'bodyInput_AddressCity_' + i" class="input"
-                                [(ngModel)]="location.address.city">
+    <ng-container *ngIf="mutableFilteredLocationList.length != 0">
+        <div class="scrollWrapper">
+            <ng-container *ngFor="let location of mutableFilteredLocationList; let i = index">
+                <div class="collapsibleWrapper">
+                    <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
+                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ location.Label }}</label>
+                    <div class="collapsibleContent">
+                        <div class="contentBody">
+                            <div class="body-id">
+                                <label [attr.for]="'ID' + i" class="bodyInputLabel">ID</label>
+                                <input type="text" [attr.id]="'ID' + i" class="input" [ngModel]="location.ID" disabled>
+                            </div>
+
+                            <div>
+                                <label [attr.for]="'label' + i" class="bodyInputLabel">Name</label>
+                                <input type="text" [attr.id]="'label' + i" class="input" [(ngModel)]="location.Label">
+                            </div>
+
+                            <div>
+                                <label [attr.for]="'descriptiveInformation' + i"
+                                    class="bodyInputLabel">Informationen</label>
+                                <input type="text" [attr.id]="'descriptiveInformation' + i" class="input"
+                                    [(ngModel)]="location.DescriptiveInformation">
+                            </div>
+
+                            <div>
+                                <h3>Adresse</h3>
+                            </div>
+
+                            <div>
+                                <label [attr.for]="'postalcode' + i" class="bodyInputLabel">PLZ</label>
+                                <input type="text" [attr.id]="'postalcode' + i" class="input"
+                                    [(ngModel)]="location.address.postalcode">
+                            </div>
+
+                            <div>
+                                <label [attr.for]="'city' + i" class="bodyInputLabel">Stadt</label>
+                                <input type="text" [attr.id]="'city' + i" class="input"
+                                    [(ngModel)]="location.address.city">
+                            </div>
+
+                            <div>
+                                <label [attr.for]="'street' + i" class="bodyInputLabel">Straße</label>
+                                <input type="text" [attr.id]="'street' + i" class="input"
+                                    [(ngModel)]="location.address.street">
+                            </div>
+
+                            <div class="bodyActions">
+                                <button class="buttonInfo actionCancel" (click)="cancel(i)">Abbrechen</button>
+                                <button class="buttonDanger actionDelete"
+                                    (click)="deleteLocation(location.ID)">Löschen</button>
+                                <button class="buttonSuccess actionSave"
+                                    (click)="updateLocation(location.ID)">Speichern</button>
+                            </div>
                         </div>
-
-                        <div class="addressStreet">
-                            <label [attr.for]="'bodyInput_AddressStreet_' + i" class="bodyInputLabel">Straße</label>
-                            <input type="text" [attr.id]="'bodyInput_AddressStreet_' + i" class="input"
-                                [(ngModel)]="location.address.street">
-                        </div>
                     </div>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>
 
-                    <div class="bodyActions">
-                        <button class="buttonInfo actionCancel" (click)="cancel(i)">Abbrechen</button>
-                        <button class="buttonDanger actionDelete" (click)="deleteLocation(i)">Löschen</button>
-                        <button class="buttonSuccess actionSave" (click)="saveLocation(i)">Speichern</button>
 
-                    </div>
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <h2>Neuen Standort erstellen</h2>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+            <div class="contentBody">
+                <div>
+                    <label for="label" class="bodyInputLabel">Label</label>
+                    <input type="text" id="label" class="input" [(ngModel)]="newLocation.Label">
+                </div>
+
+                <div>
+                    <label for="descriptiveInformation" class="bodyInputLabel">Informationen</label>
+                    <input type="text" id="descriptiveInformation" class="input"
+                        [(ngModel)]="newLocation.DescriptiveInformation">
+                </div>
+
+                <div>
+                    <h3>Adresse</h3>
+                </div>
+
+                <div>
+                    <label for="postalcode" class="bodyInputLabel">PLZ</label>
+                    <input type="text" id="postalcode" class="input" [(ngModel)]="newLocation.address.postalcode">
+                </div>
+
+                <div>
+                    <label for="city" class="bodyInputLabel">Stadt</label>
+                    <input type="text" id="city" class="input" [(ngModel)]="newLocation.address.city">
+                </div>
+
+                <div>
+                    <label for="street" class="bodyInputLabel">Straße</label>
+                    <input type="text" id="street" class="input" [(ngModel)]="newLocation.address.street">
+                </div>
+
+                <div class="bodyActions">
+                    <a class="buttonInfo actionCancel" href="#">Abbrechen</a>
+                    <a class="buttonSuccess actionSave" href="#" id="popUpSave"
+                        (click)="createLocation(newLocation)">Speichern</a>
                 </div>
             </div>
         </div>
-    </ng-container>
+    </div>
 </div>

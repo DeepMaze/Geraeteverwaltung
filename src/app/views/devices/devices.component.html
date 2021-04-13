@@ -1,14 +1,12 @@
 <div>
     <div class="filterWrapper">
         <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue" (keyup)="prepareFilter($event)">
-        <!-- <button class="buttonInfo filterButton" (click)="doFilter(filterValue)">Filtern</button> -->
         <a class="buttonPrimary createDeviceButton" href="#popup1">Gerät hinzufügen</a>
-        <!-- <button class="buttonPrimary createDeviceButton" (click)="createDevice()">Gerät hinzufügen</button> -->
     </div>
 
     <ng-container *ngIf="mutableFilteredDeviceList.length == 0">
         <div class="body">
-            DeviceList is empty!
+            Es wurden keine Geräte gefunden!
         </div>
     </ng-container>
 

@@ -21,6 +21,59 @@
     font-size: 16pt;
 }
 
+.createLocationButton {
+    margin: 5px;
+    height: 54px;
+    font-size: 16pt;
+    text-decoration: none;
+    line-height: 54px;
+    color: black;
+}
+
+.actionCancel {
+    margin: 5px;
+    padding: 0 15px;
+    height: 50px;
+    font-size: 24px;
+    text-decoration: none;
+    line-height: 50px;
+    color: black;
+}
+
+.actionSave {
+    margin: 5px;
+    padding: 0 15px;
+    height: 50px;
+    font-size: 24px;
+    text-decoration: none;
+    line-height: 50px;
+    color: black;
+}
+
+.scrollWrapper {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 80vh;
+    padding-right: 15px;
+}
+
+.scrollWrapper::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px $info-500;
+    border-radius: 10px;
+    background-color: $info-300;
+}
+
+.scrollWrapper::-webkit-scrollbar {
+    width: 12px;
+    background-color: $info-100;
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px $info-700;
+    background-color: $info-400;
+}
+
 .collapsibleToggle {
     display: none;
 }
@@ -39,7 +92,7 @@
     font-weight: bold;
     font-family: monospace;
     font-size: 1.2rem;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     text-align: center;
     color: #ddd;
     text-overflow: ellipsis;
@@ -68,7 +121,7 @@
 }
 
 .collapsibleToggle:checked + .collapsibleLabel + .collapsibleContent {
-    max-height: 350px;
+    min-height: 620px;
 }
 
 .collapsibleToggle:checked + .collapsibleLabel {
@@ -78,7 +131,7 @@
 
 .collapsibleContent {
     max-height: 0px;
-    overflow: hidden;
+    overflow: auto;
     transition: max-height 0.25s ease-in-out;
 
     background-color: $info-100;
@@ -108,21 +161,7 @@
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-}
 
-.bodyName {
-    width: 100%;
-}
-
-.contentBody .bodyAddress {
-    flex-wrap: wrap;
-}
-
-.bodyAddress {
-    width: 100%;
-}
-
-.bodyAddress div {
     width: 100%;
 }
 
@@ -130,16 +169,16 @@
     margin: 5px;
     padding: 0 5px;
     height: 40px;
-    min-width: 60px;
+    width: 230px;
     font-size: 15pt;
     line-height: 40px;
 }
 
-.contentBody div input[type="text"] {
+.contentBody div input {
     outline: none;
     margin: 5px;
     height: 40px;
-    width: calc(100% - 50px);
+    width: calc(100% - 230px);
 }
 
 .bodyActions button {
@@ -147,8 +186,64 @@
     padding: 0 15px;
     height: 50px;
     font-size: 24px;
+    cursor: pointer;
 }
 
 .bodyActions button:focus {
     outline: none;
+}
+
+//
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 50%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+.popup .close:hover {
+    color: #06d85f;
+}
+.popup .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+#popUpSave {
+    height: 54px;
 }

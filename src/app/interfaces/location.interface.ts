@@ -1,6 +1,10 @@
-import { Address } from "../interfaces/address.interface";
-
 export interface Location {
-    name: string;
-    address: Address;
+    ID: number,
+    label: string,
+    DescriptiveInformation: string,
+    Address: {
+        Postalcode: string,
+        City: string;
+        Street: string;
+    };
 }
