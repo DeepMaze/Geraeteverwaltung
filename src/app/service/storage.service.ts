@@ -12,6 +12,14 @@ export class StorageService {
         this.storage = storage;
     }
 
+    public initiateStorage(): void {
+        var storageItemKeys = Object.keys(this.storage);
+        storageItemKeys.forEach(storageKey => {
+            var storageItem = this.storage.getItem(storageKey);
+            this.set(storageKey, storageItem);
+        });
+    }
+
     private prepareStorage(key: string): any {
         var storageItem: string = this.storage.getItem(key) || '';
         if (!storageItem || storageItem == 'undefined') {

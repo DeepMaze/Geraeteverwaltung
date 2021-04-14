@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthenticationService } from "./service/authentication.service";
+import { LocalStorageService } from './service/local-storage.service';
 
 @Component({
     selector: 'app-root',
@@ -20,10 +21,12 @@ export class AppComponent {
 
     constructor(
         private router: Router,
-        public authService: AuthenticationService
+        public authService: AuthenticationService,
+        private localStorage: LocalStorageService
     ) { }
 
     ngOnInit() {
+        this.localStorage.initiateStorage();
         this.router.events.subscribe((event: any) => {
             if (event instanceof NavigationEnd) {
                 let newTitle = this.routeTitles.find(route => { return route.route === event.url }) || { title: "undefined" };
