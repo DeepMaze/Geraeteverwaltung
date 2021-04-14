@@ -1,29 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-// import { FormsModule } from '@angular/forms';
 
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../../service/authentication.service';
+import { LoginData } from 'src/app/interfaces/login-data.interface';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-    public userData = { userName: "", passWord: "" };
+    public loginData: LoginData = { userName: "", passWord: "" };
 
     constructor(
         private router: Router,
         private authService: AuthenticationService
     ) { }
 
-    ngOnInit(): void { }
-
-    async prepareLogin(asGuest: boolean = false): Promise<void> {
+    public async prepareLogin(asGuest: boolean = false): Promise<void> {
         try {
-            var result: any = await this.authService.login(asGuest ? environment.guestData : this.userData);
+            var result: any = await this.authService.login(asGuest ? environment.guestData : this.loginData);
         } catch (err) {
             window.alert('Es gab ein Problem beim erstellen eines Benutzers!');
         }
@@ -32,7 +30,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    routeTo(routerLink: string): void {
+    public routeTo(routerLink: string): void {
         this.router.navigateByUrl(routerLink);
     }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { ApiService } from 'src/app/service/api.service';
+import { LoginData } from 'src/app/interfaces/login-data.interface';
 
 @Component({
     selector: 'app-create-user',
@@ -9,7 +11,7 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class CreateUserComponent implements OnInit {
 
-    public userData = { userName: "", passWord: "" };
+    public loginData: LoginData = { userName: "", passWord: "" };
 
     constructor(
         private router: Router,
@@ -20,7 +22,7 @@ export class CreateUserComponent implements OnInit {
 
     createUser(): void {
         try {
-            this.apiService.createUser(this.userData);
+            this.apiService.createUser(this.loginData);
         } catch (err) {
             window.alert('Es gab ein Problem beim erstellen eines Benutzers!');
         }

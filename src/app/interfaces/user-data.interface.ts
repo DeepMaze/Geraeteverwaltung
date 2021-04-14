@@ -1,5 +1,5 @@
 export interface UserData {
-    userID: number,
-    userName: string,
-    token: string,
+    userID: number;
+    userName: string;
+    token: string;
 }

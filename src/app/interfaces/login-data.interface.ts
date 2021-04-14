@@ -1,4 +1,4 @@
 export interface LoginData {
-    userName: string,
-    passWord: string
+    userName: string;
+    passWord: string;
 }

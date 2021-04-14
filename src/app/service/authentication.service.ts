@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { LocalStorageService } from "./local-storage.service";
 import { ApiService } from "../service/api.service";
@@ -15,7 +14,6 @@ export class AuthenticationService {
     public loggedIn: boolean = false;
 
     constructor(
-        private router: Router,
         private localStorage: LocalStorageService,
         private apiService: ApiService
     ) {
