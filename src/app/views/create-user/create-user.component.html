@@ -1,15 +1,15 @@
-<div class="background">
-    <div class="login-wrapper" (keydown.enter)="createUser()">
-        <div class="flex-item" id="top-text"> <span>Account erstellen</span> </div>
+<div class="login-wrapper" (keydown.enter)="createUser()">
+    <div class="flex-item" id="top-text"> <span>Account erstellen</span> </div>
 
-        <div class="flex-item"> <label for="userName">Benutzername</label> </div>
-        <div class="flex-item"> <input type="text" id="userName" [(ngModel)]="loginData.userName"> </div>
+    <div class="flex-item"> <label for="userName">Benutzername</label> </div>
+    <div class="flex-item"> <input type="text" id="userName" [(ngModel)]="loginData.userName"> </div>
 
-        <div class="flex-item"> <label for="passWord">Passwort</label> </div>
-        <div class="flex-item"> <input type="password" id="passWord" [(ngModel)]="loginData.passWord"> </div>
+    <div class="flex-item"> <label for="passWord">Passwort</label> </div>
+    <div class="flex-item"> <input type="password" id="passWord" [(ngModel)]="loginData.passWord"> </div>
 
-        <div class="flex-itemHalf actionButtons"> <button class="cancelButton" (click)="routeTo('/login')">Abbrechen</button> </div>
-        <div class="flex-itemHalf actionButtons"> <button class="createAccountButton" (click)="createUser()">Account Erstellen</button> </div>
+    <div class="flex-itemHalf actionButtons"> <button class="cancelButton"
+            (click)="routeTo('/login')">Abbrechen</button> </div>
+    <div class="flex-itemHalf actionButtons"> <button class="createAccountButton" (click)="createUser()">Account
+            Erstellen</button> </div>
 
-    </div>
 </div>

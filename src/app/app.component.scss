@@ -18,12 +18,12 @@
 }
 
 #navigationLeft {
-    width: 60%;
+    min-width: 50%;
     display: inherit;
 }
 
 .navigationRight {
-    max-width: 40%;
+    max-width: 50%;
     display: inherit;
 }
 
@@ -56,6 +56,16 @@
 }
 
 #page-content {
-    margin: 20px 15%;
-    padding: 10px 20px;
+    position: fixed;
+    left: 0;
+    top: 70px;
+
+    height: calc(100vh - 70px);
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #4d5559;
 }

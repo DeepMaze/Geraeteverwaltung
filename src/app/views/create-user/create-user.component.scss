@@ -1,20 +1,5 @@
 @import "../../../styles.scss";
 
-.background {
-    position: fixed;
-    left: 0;
-    top: 70px;
-
-    height: calc(100vh - 70px);
-    width: 100vw;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: #4d5559;
-}
-
 .login-wrapper {
     padding: 40px;
     background-color: #636e74;
