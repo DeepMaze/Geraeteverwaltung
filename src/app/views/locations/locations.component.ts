@@ -5,9 +5,9 @@ import { ApiService } from 'src/app/service/api.service';
 import { Location } from "../../interfaces/location.interface";
 
 @Component({
-	selector: 'app-locations',
-	templateUrl: './locations.component.html',
-	styleUrls: ['./locations.component.scss']
+    selector: 'app-locations',
+    templateUrl: './locations.component.html',
+    styleUrls: ['./locations.component.scss']
 })
 export class LocationsComponent implements OnInit {
 
@@ -29,11 +29,9 @@ export class LocationsComponent implements OnInit {
             ID: 0,
             Label: '',
             DescriptiveInformation: '',
-            Address: {
-                Postalcode: '',
-                City: '',
-                Street: '',
-            },
+            Postalcode: '',
+            City: '',
+            Street: '',
         };
     }
 
@@ -43,6 +41,7 @@ export class LocationsComponent implements OnInit {
                 if (locationList && locationList.length != 0) {
                     this.locationList = JSON.parse(JSON.stringify(locationList));
                     this.mutableFilteredLocationList = JSON.parse(JSON.stringify(locationList));
+                    console.log("locationList: ", locationList);
                 }
             })
             .catch((err: any) => {

@@ -2,7 +2,7 @@
     <div class="filterWrapper">
         <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
             (keyup)="prepareFilter($event)">
-        <a class="createNewButton button" href="#createNew">Gerät hinzufügen</a>
+        <a class="createNewButton button" href="/devices#createNewDevice">Gerät hinzufügen</a>
     </div>
 
     <ng-container *ngIf="mutableFilteredDeviceList.length == 0">
@@ -93,61 +93,60 @@
 </div>
 
 
-<div id="createNew" class="overlay">
+<div id="createNewDevice" class="overlay">
     <div class="popup">
         <h2>Neues Gerät erstellen</h2>
-        <!-- <a class="close" href="#">&times;</a> -->
         <div class="content">
             <div class="contentBody">
-                <div class="body-label">
+                <div>
                     <label for="label" class="bodyInputLabel">Label</label>
                     <input type="text" id="label" class="input" [(ngModel)]="newDevice.Label">
                 </div>
 
-                <div class="body-desciptiveInformation">
+                <div>
                     <label for="descriptiveInformation" class="bodyInputLabel">DescriptiveInformation</label>
                     <input type="text" id="descriptiveInformation" class="input"
                         [(ngModel)]="newDevice.DescriptiveInformation">
                 </div>
 
-                <div class="body-serialNumber">
+                <div>
                     <label for="serialNumber" class="bodyInputLabel">SerialNumber</label>
                     <input type="text" id="serialNumber" class="input" [(ngModel)]="newDevice.SerialNumber">
                 </div>
 
-                <div class="body-manufacturer">
+                <div>
                     <label for="manufacturer" class="bodyInputLabel">Manufacturer</label>
                     <input type="text" id="manufacturer" class="input" [(ngModel)]="newDevice.Manufacturer">
                 </div>
 
-                <div class="body-manufacturer">
+                <div>
                     <label for="model" class="bodyInputLabel">Model</label>
                     <input type="text" id="model" class="input" [(ngModel)]="newDevice.Model">
                 </div>
 
-                <div class="body-rentStart">
+                <div>
                     <label for="rentStart" class="bodyInputLabel">RentStart</label>
                     <input type="date" id="rentStart" class="input" [(ngModel)]="newDevice.RentStart">
                 </div>
 
-                <div class="body-expectedReturn">
+                <div>
                     <label for="expectedReturn" class="bodyInputLabel">ExpectedReturn</label>
                     <input type="date" id="expectedReturn" class="input" [(ngModel)]="newDevice.ExpectedReturn">
                 </div>
 
-                <div class="body-locationID">
+                <div>
                     <label for="locationID" class="bodyInputLabel">LocationID</label>
                     <input type="text" id="locationID" class="input" [(ngModel)]="newDevice.LocationID">
                 </div>
 
-                <div class="body-personID">
+                <div>
                     <label for="personID" class="bodyInputLabel">PersonID</label>
                     <input type="text" id="personID" class="input" [(ngModel)]="newDevice.PersonID">
                 </div>
 
                 <div class="bodyActions">
-                    <a class="cancelButton button" id="cancelButtonPOPUP" href="#">Abbrechen</a>
-                    <a class="saveButton button" id="saveButtonPOPUP" href="#"
+                    <a class="cancelButton button" id="cancelButtonPOPUP" href="/devices#">Abbrechen</a>
+                    <a class="saveButton button" id="saveButtonPOPUP" href="/devices#"
                         (click)="createDevice(newDevice)">Speichern</a>
                 </div>
             </div>
