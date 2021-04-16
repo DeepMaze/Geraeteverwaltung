@@ -1,8 +1,8 @@
-<div>
+<div class="contentWrapper">
     <div class="filterWrapper">
         <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
             (keyup)="prepareFilter($event)">
-        <a class="buttonPrimary createPersonButton" href="#popup1">Standort hinzufügen</a>
+        <a class="createNewButton button" href="/persons#createNewPerson">Standort hinzufügen</a>
     </div>
 
     <ng-container *ngIf="mutableFilteredPersonList.length == 0">
@@ -17,7 +17,7 @@
                 <div class="collapsibleWrapper">
                     <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
                     <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ person.FirstName + ' ' +
-                        person.LastName }}</label>
+                        person.LastName + '(' + person.ID + ')' }}</label>
                     <div class="collapsibleContent">
                         <div class="contentBody">
                             <div class="body-id">
@@ -43,10 +43,10 @@
                             </div>
 
                             <div class="bodyActions">
-                                <button class="buttonInfo actionCancel" (click)="cancel(i)">Abbrechen</button>
-                                <button class="buttonDanger actionDelete"
+                                <button class="cancelButton" id="cancelButton" (click)="cancel(i)">Abbrechen</button>
+                                <button class="deleteButton" id="deleteButton"
                                     (click)="deletePerson(person.ID)">Löschen</button>
-                                <button class="buttonSuccess actionSave"
+                                <button class="saveButton" id="saveButton"
                                     (click)="updatePerson(person.ID)">Speichern</button>
                             </div>
                         </div>
@@ -58,10 +58,9 @@
 </div>
 
 
-<div id="popup1" class="overlay">
+<div id="createNewPerson" class="overlay">
     <div class="popup">
         <h2>Neue Person erstellen</h2>
-        <a class="close" href="#">&times;</a>
         <div class="content">
             <div class="contentBody">
                 <div>
@@ -80,8 +79,8 @@
                 </div>
 
                 <div class="bodyActions">
-                    <a class="buttonInfo actionCancel" href="#">Abbrechen</a>
-                    <a class="buttonSuccess actionSave" href="#" id="popUpSave"
+                    <a class="cancelButton button" id="cancelButtonPOPUP" href="/persons#">Abbrechen</a>
+                    <a class="saveButton button" id="saveButtonPOPUP" href="/persons#"
                         (click)="createPerson(newPerson)">Speichern</a>
                 </div>
             </div>
