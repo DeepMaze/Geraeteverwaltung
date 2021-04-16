@@ -160,12 +160,14 @@ button.active {
 
     display: flex;
     justify-content: center;
-    align-content: center;
+    // align-content: center;
     flex-wrap: wrap;
 }
 
 .filterWrapper {
+    height: 50px;
     width: 80%;
+
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
