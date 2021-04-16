@@ -16,7 +16,7 @@
             <ng-container *ngFor="let location of mutableFilteredLocationList; let i = index">
                 <div class="collapsibleWrapper">
                     <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
-                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ location.Label + ' (' +
+                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ location.Label + ' (ID: ' +
                         location.ID + ')' }}</label>
                     <div class="collapsibleContent">
                         <div class="contentBody">
