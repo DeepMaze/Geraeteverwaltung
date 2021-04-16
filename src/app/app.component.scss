@@ -1,7 +1,7 @@
 @import "../styles.scss";
 
 .navigation {
-    background-color: #072a5e;
+    background-color: #4f7181;
     overflow: hidden;
     display: flex;
     flex-wrap: nowrap;
@@ -22,39 +22,37 @@
     display: inherit;
 }
 
-#navigationRight {
-    width: 40%;
+.navigationRight {
+    max-width: 40%;
     display: inherit;
 }
 
-.navigation #navigationRight a {
+.navigation .navigationRight a {
     display: block;
-    color: $primary-500;
+    background-color: #46606d;
+    color: white;
     text-align: center;
     text-decoration: none;
     font-size: 20px;
-    border: 2px solid $primary-700;
-    border-radius: 30px;
+    border-radius: 4px;
     padding: 10px 20px;
     margin: 0 10px;
-    transition: box-shadow 0.4s, background-color 0.4s, transform 0.1s cubic-bezier(0.55, 0, 0.55, 0.2), color 0.5s;
+    transition: box-shadow 0.5s, background-color 0.5s, color 0.5s;
     cursor: pointer;
 }
 
-.navigation #navigationRight a:hover {
+.navigation .navigationRight a:hover {
     color: $primary-900;
-    background-color: $primary-200;
+    background-color: $primary-400;
     box-shadow: -0px -0px 10px $primary-700 inset;
-    transition: box-shadow 0.4s, background-color 0.4s, transform 0.1s cubic-bezier(0.55, 0, 0.55, 0.2), color 0.1s;
-    transform: scale(1.05);
+    transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
 }
 
-.navigation #navigationRight a.active {
+.navigation .navigationRight a.active {
     color: $primary-900;
     background-color: $primary-300;
     box-shadow: -0px -0px 10px $primary-700 inset;
-    transition: box-shadow 0.4s, background-color 0.4s, transform 0.1s cubic-bezier(0.55, 0, 0.55, 0.2), color 0.1s;
-    transform: scale(1.1);
+    transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
 }
 
 #page-content {

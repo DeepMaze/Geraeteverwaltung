@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+
 import { AuthenticationService } from "./service/authentication.service";
 import { LocalStorageService } from './service/local-storage.service';
 
@@ -14,6 +15,8 @@ export class AppComponent {
 
     private routeTitles = [
         { route: "/", title: "Geräteverwaltung" },
+        { route: "/login", title: "Login" },
+        { route: "/createUser", title: "Account erstellen" },
         { route: "/devices", title: "Geräteverwaltung" },
         { route: "/locations", title: "Geschäftsstellenverwaltung" },
         { route: "/users", title: "Benutzerverwaltung" },

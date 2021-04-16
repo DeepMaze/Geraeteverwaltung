@@ -1,25 +1,22 @@
-<ng-container *ngIf="this.authService.loggedIn == true; then loggedIn; else notLoggedIn">
-</ng-container>
+<div class="navigation">
 
-<ng-template #loggedIn>
-    <div class="navigation">
-        <div id="navigationLeft">
-            <span id="title">{{ title }}</span>
-        </div>
-
-        <div id="navigationRight">
-            <a id="devices-link" routerLink="/devices" routerLinkActive="active">Geräte</a>
-            <a id="location-link" routerLink="/locations" routerLinkActive="active">Geschäftsstellen</a>
-            <a id="user-link" routerLink="/users" routerLinkActive="active">Benutzer</a>
-            <a id="logout-link" (click)="logout()">Abmelden</a>
-        </div>
+    <div id="navigationLeft">
+        <span id="title">{{ title }}</span>
     </div>
 
-    <div id="page-content">
-        <router-outlet></router-outlet>
+    <div class="navigationRight" *ngIf="this.authService.loggedIn">
+        <a id="devices-link" routerLink="/devices" routerLinkActive="active">Geräte</a>
+        <a id="location-link" routerLink="/locations" routerLinkActive="active">Geschäftsstellen</a>
+        <a id="user-link" routerLink="/users" routerLinkActive="active">Benutzer</a>
+        <a id="logout-link" (click)="logout()">Abmelden</a>
     </div>
-</ng-template>
 
-<ng-template #notLoggedIn>
+    <div class="navigationRight" *ngIf="!this.authService.loggedIn">
+        <a id="login-link" routerLink="/login" routerLinkActive="active">Anmeldung</a>
+        <a id="createUser-link" routerLink="/createUser" routerLinkActive="active">Account erstellen</a>
+    </div>
+</div>
+
+<div id="page-content">
     <router-outlet></router-outlet>
-</ng-template>
+</div>

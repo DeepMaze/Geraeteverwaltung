@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DevicesComponent } from './views/devices/devices.component';
 import { LocationsComponent } from './views/locations/locations.component';
-import { UsersComponent } from './views/users/users.component';
 import { LoginComponent } from './views/login/login.component';
 import { CreateUserComponent } from './views/create-user/create-user.component';
 import { PersonsComponent } from './views/persons/persons.component';
@@ -17,7 +16,6 @@ import { PersonsComponent } from './views/persons/persons.component';
         AppComponent,
         DevicesComponent,
         LocationsComponent,
-        UsersComponent,
         LoginComponent,
         CreateUserComponent,
         PersonsComponent,

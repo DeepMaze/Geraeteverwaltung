@@ -16,7 +16,7 @@
             <ng-container *ngFor="let person of mutableFilteredPersonList; let i = index">
                 <div class="collapsibleWrapper">
                     <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
-                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ person.Firstname + ' ' +
+                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ person.FirstName + ' ' +
                         person.LastName }}</label>
                     <div class="collapsibleContent">
                         <div class="contentBody">

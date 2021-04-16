@@ -7,7 +7,6 @@ import { CreateUserComponent } from "./views/create-user/create-user.component";
 import { DevicesComponent } from "./views/devices/devices.component";
 import { LocationsComponent } from "./views/locations/locations.component";
 import { PersonsComponent } from "./views/persons/persons.component";
-import { UsersComponent } from "./views//users/users.component";
 
 const routes: Routes = [
     { path: '', canActivate: [AuthGuard], component: DevicesComponent },
@@ -16,8 +15,7 @@ const routes: Routes = [
     { path: 'createUser', canActivate: [AuthGuard], component: CreateUserComponent },
     { path: 'devices', canActivate: [AuthGuard], component: DevicesComponent },
     { path: 'locations', canActivate: [AuthGuard], component: LocationsComponent },
-    { path: 'persons', canActivate: [AuthGuard], component: PersonsComponent },
-    { path: 'users', canActivate: [AuthGuard], component: UsersComponent },
+    { path: 'persons', canActivate: [AuthGuard], component: PersonsComponent }
 ];
 
 @NgModule({
