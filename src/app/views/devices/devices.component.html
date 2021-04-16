@@ -1,7 +1,8 @@
-<div>
+<div class="devices-wrapper">
     <div class="filterWrapper">
-        <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue" (keyup)="prepareFilter($event)">
-        <a class="buttonPrimary createDeviceButton" href="#popup1">Gerät hinzufügen</a>
+        <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
+            (keyup)="prepareFilter($event)">
+        <a class="createDeviceButton button" href="#createNew">Gerät hinzufügen</a>
     </div>
 
     <ng-container *ngIf="mutableFilteredDeviceList.length == 0">
@@ -77,9 +78,11 @@
                             </div>
 
                             <div class="bodyActions">
-                                <button class="buttonInfo actionCancel" (click)="cancel(i)">Abbrechen</button>
-                                <button class="buttonDanger actionDelete" (click)="deleteDevice(device.ID)">Löschen</button>
-                                <button class="buttonSuccess actionSave" (click)="updateDevice(device.ID)">Speichern</button>
+                                <button class="cancelButton" id="cancelButton" (click)="cancel(i)">Abbrechen</button>
+                                <button class="deleteButton" id="deleteButton"
+                                    (click)="deleteDevice(device.ID)">Löschen</button>
+                                <button class="saveButton" id="saveButton"
+                                    (click)="updateDevice(device.ID)">Speichern</button>
                             </div>
                         </div>
                     </div>
@@ -90,10 +93,10 @@
 </div>
 
 
-<div id="popup1" class="overlay">
+<div id="createNew" class="overlay">
     <div class="popup">
         <h2>Neues Gerät erstellen</h2>
-        <a class="close" href="#">&times;</a>
+        <!-- <a class="close" href="#">&times;</a> -->
         <div class="content">
             <div class="contentBody">
                 <div class="body-label">
@@ -143,8 +146,8 @@
                 </div>
 
                 <div class="bodyActions">
-                    <a class="buttonInfo actionCancel" href="#">Abbrechen</a>
-                    <a class="buttonSuccess actionSave" href="#" id="popUpSave"
+                    <a class="cancelButton button" id="cancelButtonPOPUP" href="#">Abbrechen</a>
+                    <a class="saveButton button" id="saveButtonPOPUP" href="#"
                         (click)="createDevice(newDevice)">Speichern</a>
                 </div>
             </div>

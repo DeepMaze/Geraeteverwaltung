@@ -1,6 +1,23 @@
 @import "../../../styles.scss";
 
+.devices-wrapper {
+    padding: 40px;
+    background-color: #636e74;
+
+    height: calc(85vh - 70px);
+    width: 1000px;
+    max-width: 90vw;
+
+    border-radius: 3px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
 .filterWrapper {
+    width: 80%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -9,69 +26,103 @@
 
 .filterInput {
     outline: none;
-    margin: 5px;
-    height: 50px;
+    margin: 0 20px 0 0;
+    height: 45px;
     width: 70%;
     font-size: 16pt;
 }
 
-.filterButton {
-    margin: 5px;
-    height: 54px;
-    font-size: 16pt;
+button,
+.button {
+    height: 50px;
+    width: 165px;
+    font-size: 20px;
+    text-decoration: none;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 3px;
+    color: black;
+    border: none;
+    box-shadow: none;
+    transition: box-shadow 0.5s, background-color 0.5s, color 0.5s;
+}
+
+button:hover {
+    transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
+}
+
+button.active {
+    transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
 }
 
 .createDeviceButton {
-    margin: 5px;
-    height: 54px;
-    font-size: 16pt;
-    text-decoration: none;
-    line-height: 54px;
-    color: black;
+    background-color: #679bb3;
+}
+.createDeviceButton:hover {
+    background-color: #588397;
+    box-shadow: -0px -0px 50px #679bb3 inset;
 }
 
-.actionCancel {
-    margin: 5px;
-    padding: 0 15px;
-    height: 50px;
-    font-size: 24px;
-    text-decoration: none;
-    line-height: 50px;
-    color: black;
+.cancelButton {
+    background-color: hsl(0, 0%, 73%);
+}
+.cancelButton:hover {
+    background-color: hsl(0, 0%, 62%);
+    box-shadow: -0px -0px 50px hsl(0, 0%, 83%) inset;
 }
 
-.actionSave {
-    margin: 5px;
-    padding: 0 15px;
-    height: 50px;
-    font-size: 24px;
-    text-decoration: none;
-    line-height: 50px;
-    color: black;
+#cancelButton {
+    margin: 0 auto 0 20px;
+}
+
+.deleteButton {
+    background-color: #f28260;
+}
+.deleteButton:hover {
+    background-color: #ca6d51;
+    box-shadow: -0px -0px 50px #ff8864 inset;
+}
+
+#deleteButton {
+    margin: 0 20px 0 auto;
+}
+
+.saveButton {
+    background-color: #7be9d6;
+}
+.saveButton:hover {
+    background-color: #61b8a9;
+    box-shadow: -0px -0px 50px #87ffeb inset;
+}
+
+#saveButton {
+    margin: 0 20px 0 20px;
 }
 
 .scrollWrapper {
     overflow-y: scroll;
     overflow-x: hidden;
-    max-height: 80vh;
+    height: calc(80vh - 70px);
     padding-right: 15px;
 }
 
 .scrollWrapper::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px $info-500;
-    border-radius: 10px;
-    background-color: $info-300;
+    box-shadow: inset 0 0 6px #636e74;
+    -webkit-box-shadow: inset 0 0 6px #636e74;
+    border-radius: 4px;
+    background-color: #636e74;
 }
 
 .scrollWrapper::-webkit-scrollbar {
     width: 12px;
-    background-color: $info-100;
+    background-color: #636e74;
 }
 
 .scrollWrapper::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px $info-700;
-    background-color: $info-400;
+    box-shadow: inset 0 0 6px #5a6f79;
+    -webkit-box-shadow: inset 0 0 6px #5a6f79;
+    border-radius: 4px;
+    background-color: #81a6b8;
 }
 
 .collapsibleToggle {
@@ -87,12 +138,12 @@
     display: block;
     overflow: hidden;
     cursor: pointer;
-    border-radius: 7px;
-    background-color: $info-700;
+    border-radius: 3px;
+    background-color: #4f7181;
+    box-shadow: 0px 0px 35px #7aaac1 inset;
     font-weight: bold;
     font-family: monospace;
     font-size: 1.2rem;
-    // text-transform: uppercase;
     text-align: center;
     color: #ddd;
     text-overflow: ellipsis;
@@ -121,7 +172,8 @@
 }
 
 .collapsibleToggle:checked + .collapsibleLabel + .collapsibleContent {
-    min-height: 620px;
+    max-height: 620px;
+    transition: max-height 0.5s;
 }
 
 .collapsibleToggle:checked + .collapsibleLabel {
@@ -130,9 +182,9 @@
 }
 
 .collapsibleContent {
-    max-height: 0px;
-    overflow: auto;
-    transition: max-height 0.25s ease-in-out;
+    max-height: 5px;
+    overflow: hidden;
+    transition: max-height 0.5s;
 
     background-color: $info-100;
     border-bottom: 1px solid $info-400;
@@ -244,6 +296,10 @@
     overflow: auto;
 }
 
-#popUpSave {
-    height: 54px;
+#cancelButtonPOPUP {
+    margin: 0 auto 0 20px;
+}
+
+#saveButtonPOPUP {
+    margin: 0 20px 0 auto;
 }

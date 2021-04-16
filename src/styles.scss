@@ -61,13 +61,13 @@ body {
 input {
     padding: 0 15px;
     background-color: $info-200;
-    border: 2px solid $info-500;
-    border-radius: 10px;
-    box-shadow: 0 0 2px $info-600 inset;
+    border: 2px solid #80b6cf;
+    border-radius: 5px;
+    box-shadow: 0 0 2px #7e9dac inset;
 }
 
 input:focus {
-    box-shadow: 0 0 5px $info-700 inset;
+    box-shadow: 0 0 5px #7e9dac inset;
 }
 
 button {
@@ -76,90 +76,4 @@ button {
 
 button:focus {
     outline: none;
-}
-
-.buttonPrimary {
-    border: 2px solid $primary-500;
-    border-radius: 10px;
-    background-color: $primary-200;
-    box-shadow: 0 0 2px $primary-600 inset;
-    padding: 0 15px;
-    transition: box-shadow 0.1s;
-}
-
-.buttonPrimary:hover {
-    box-shadow: 0 0 5px $primary-600 inset;
-    transition: box-shadow 0.1s;
-}
-
-.buttonPrimary:focus {
-    box-shadow: 0 0 5px $primary-700 inset;
-}
-
-.buttonSuccess {
-    border: 2px solid $success-500;
-    border-radius: 10px;
-    background-color: $success-200;
-    box-shadow: 0 0 2px $success-600 inset;
-    padding: 0 15px;
-}
-
-.buttonSuccess:hover {
-    box-shadow: 0 0 5px $success-600 inset;
-    transition: box-shadow 0.1s;
-}
-
-.buttonSuccess:focus {
-    box-shadow: 0 0 5px $success-700 inset;
-}
-
-.buttonInfo {
-    border: 2px solid $info-500;
-    border-radius: 10px;
-    background-color: $info-200;
-    box-shadow: 0 0 2px $info-600 inset;
-    padding: 0 15px;
-}
-
-.buttonInfo:hover {
-    box-shadow: 0 0 5px $info-600 inset;
-    transition: box-shadow 0.1s;
-}
-
-.buttonInfo:focus {
-    box-shadow: 0 0 5px $info-700 inset;
-}
-
-.buttonWarning {
-    border: 2px solid $warning-500;
-    border-radius: 10px;
-    background-color: $warning-200;
-    box-shadow: 0 0 2px $warning-600 inset;
-    padding: 0 15px;
-}
-
-.buttonWarning:hover {
-    box-shadow: 0 0 5px $warning-600 inset;
-    transition: box-shadow 0.1s;
-}
-
-.buttonWarning:focus {
-    box-shadow: 0 0 5px $warning-700 inset;
-}
-
-.buttonDanger {
-    border: 2px solid $danger-500;
-    border-radius: 10px;
-    background-color: $danger-200;
-    box-shadow: 0 0 2px $danger-600 inset;
-    padding: 0 15px;
-}
-
-.buttonDanger:hover {
-    box-shadow: 0 0 5px $danger-600 inset;
-    transition: box-shadow 0.1s;
-}
-
-.buttonDanger:focus {
-    box-shadow: 0 0 5px $danger-700 inset;
 }
