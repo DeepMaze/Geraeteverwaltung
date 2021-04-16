@@ -16,7 +16,8 @@
             <ng-container *ngFor="let location of mutableFilteredLocationList; let i = index">
                 <div class="collapsibleWrapper">
                     <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
-                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ location.Label + ' (' + location.ID + ')' }}</label>
+                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ location.Label + ' (' +
+                        location.ID + ')' }}</label>
                     <div class="collapsibleContent">
                         <div class="contentBody">
                             <div class="body-id">
@@ -48,14 +49,12 @@
 
                             <div>
                                 <label [attr.for]="'city' + i" class="bodyInputLabel">Stadt</label>
-                                <input type="text" [attr.id]="'city' + i" class="input"
-                                    [(ngModel)]="location.City">
+                                <input type="text" [attr.id]="'city' + i" class="input" [(ngModel)]="location.City">
                             </div>
 
                             <div>
                                 <label [attr.for]="'street' + i" class="bodyInputLabel">Straße</label>
-                                <input type="text" [attr.id]="'street' + i" class="input"
-                                    [(ngModel)]="location.Street">
+                                <input type="text" [attr.id]="'street' + i" class="input" [(ngModel)]="location.Street">
                             </div>
 
                             <div class="bodyActions">
