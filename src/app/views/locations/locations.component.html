@@ -16,7 +16,8 @@
             <ng-container *ngFor="let location of mutableFilteredLocationList; let i = index">
                 <div class="collapsibleWrapper">
                     <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
-                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ location.Label + ' (ID: ' +
+                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ location.Label + ' (ID: '
+                        +
                         location.ID + ')' }}</label>
                     <div class="collapsibleContent">
                         <div class="contentBody">
@@ -62,7 +63,7 @@
                                 <button class="deleteButton" id="deleteButton"
                                     (click)="deleteLocation(location.ID)">Löschen</button>
                                 <button class="saveButton" id="saveButton"
-                                    (click)="updateLocation(location.ID)">Speichern</button>
+                                    (click)="updateLocation(location.ID)">Ändern</button>
                             </div>
                         </div>
                     </div>
@@ -76,43 +77,41 @@
 <div id="createNewLocation" class="overlay">
     <div class="popup">
         <h2>Neuen Standort erstellen</h2>
-        <div class="content">
-            <div class="contentBody">
-                <div>
-                    <label for="label" class="bodyInputLabel">Label</label>
-                    <input type="text" id="label" class="input" [(ngModel)]="newLocation.Label">
-                </div>
+        <div class="contentBody">
+            <div>
+                <label for="label" class="bodyInputLabel">Label</label>
+                <input type="text" id="label" class="input" [(ngModel)]="newLocation.Label">
+            </div>
 
-                <div>
-                    <label for="descriptiveInformation" class="bodyInputLabel">Informationen</label>
-                    <input type="text" id="descriptiveInformation" class="input"
-                        [(ngModel)]="newLocation.DescriptiveInformation">
-                </div>
+            <div>
+                <label for="descriptiveInformation" class="bodyInputLabel">Informationen</label>
+                <input type="text" id="descriptiveInformation" class="input"
+                    [(ngModel)]="newLocation.DescriptiveInformation">
+            </div>
 
-                <div>
-                    <h3>Adresse</h3>
-                </div>
+            <div>
+                <h3>Adresse</h3>
+            </div>
 
-                <div>
-                    <label for="postalcode" class="bodyInputLabel">PLZ</label>
-                    <input type="text" id="postalcode" class="input" [(ngModel)]="newLocation.Postalcode">
-                </div>
+            <div>
+                <label for="postalcode" class="bodyInputLabel">PLZ</label>
+                <input type="text" id="postalcode" class="input" [(ngModel)]="newLocation.Postalcode">
+            </div>
 
-                <div>
-                    <label for="city" class="bodyInputLabel">Stadt</label>
-                    <input type="text" id="city" class="input" [(ngModel)]="newLocation.City">
-                </div>
+            <div>
+                <label for="city" class="bodyInputLabel">Stadt</label>
+                <input type="text" id="city" class="input" [(ngModel)]="newLocation.City">
+            </div>
 
-                <div>
-                    <label for="street" class="bodyInputLabel">Straße</label>
-                    <input type="text" id="street" class="input" [(ngModel)]="newLocation.Street">
-                </div>
+            <div>
+                <label for="street" class="bodyInputLabel">Straße</label>
+                <input type="text" id="street" class="input" [(ngModel)]="newLocation.Street">
+            </div>
 
-                <div class="bodyActions">
-                    <a class="cancelButton button" id="cancelButtonPOPUP" href="/locations#">Abbrechen</a>
-                    <a class="saveButton button" id="saveButtonPOPUP" href="/locations#"
-                        (click)="createLocation(newLocation)">Speichern</a>
-                </div>
+            <div class="bodyActions">
+                <a class="cancelButton button" id="cancelButtonPOPUP" href="/locations#">Abbrechen</a>
+                <a class="saveButton button" id="saveButtonPOPUP" href="/locations#"
+                    (click)="createLocation(newLocation)">Speichern</a>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<div class="login-wrapper" (keydown.enter)="prepareLogin()">
+<div class="auth-wrapper" (keydown.enter)="prepareLogin()">
     <div class="flex-item" id="top-text"> <span>Anmeldung</span> </div>
 
     <div class="flex-item"> <label for="userName">Benutzername</label> </div>
@@ -7,8 +7,8 @@
     <div class="flex-item"> <label for="passWord">Passwort</label> </div>
     <div class="flex-item"> <input type="password" id="passWord" [(ngModel)]="loginData.passWord"> </div>
 
-    <div class="flex-itemHalf actionButtons"> <button class="loginAsGuestButton" (click)="prepareLogin(true)">Gast
+    <div class="flex-itemHalf actionButtons"> <button class="cancelButton" (click)="prepareLogin(true)">Gast
             Anmeldung</button> </div>
-    <div class="flex-itemHalf actionButtons"> <button class="loginButton" (click)="prepareLogin()">Anmelden</button>
+    <div class="flex-itemHalf actionButtons"> <button class="saveButton" (click)="prepareLogin()">Anmelden</button>
     </div>
 </div>

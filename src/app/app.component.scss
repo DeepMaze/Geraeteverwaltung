@@ -9,21 +9,20 @@
     align-items: center;
     color: $primary-100;
     font-size: 20px;
-    height: 70px;
+    height: 8vh;
 }
 
-#title {
-    margin-left: 20%;
-    display: inherit;
+.navigation div {
+    max-width: 70vw;
 }
 
 #navigationLeft {
-    min-width: 50%;
     display: inherit;
+    margin: 0 10vw 0 0;
+    width: 250px;
 }
 
 .navigationRight {
-    max-width: 50%;
     display: inherit;
 }
 
@@ -58,9 +57,9 @@
 #page-content {
     position: fixed;
     left: 0;
-    top: 70px;
+    top: 8vh;
 
-    height: calc(100vh - 70px);
+    height: 92vh;
     width: 100vw;
 
     display: flex;

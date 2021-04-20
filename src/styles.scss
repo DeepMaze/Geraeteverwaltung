@@ -64,10 +64,20 @@ input {
     border: 2px solid #80b6cf;
     border-radius: 5px;
     box-shadow: 0 0 2px #7e9dac inset;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 20pt;
 }
 
 input:focus {
     box-shadow: 0 0 5px #7e9dac inset;
+    outline: none;
+}
+
+label {
+    line-height: 40px;
+    font-size: 19pt;
 }
 
 .filterInput {
@@ -81,7 +91,7 @@ input:focus {
 button,
 .button {
     height: 50px;
-    width: 200px;
+    width: 180px;
     font-size: 20px;
     text-decoration: none;
     line-height: 50px;
@@ -148,12 +158,35 @@ button.active {
     margin: 0 20px 0 20px;
 }
 
+.flex-item {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.flex-itemHalf {
+    width: 50%;
+    height: 40px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.auth-wrapper {
+    padding: 20px;
+    background-color: #636e74;
+    width: 400px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
 .contentWrapper {
-    padding: 40px;
+    padding: 2vh 4vw;
     background-color: #636e74;
 
-    height: calc(85vh - 70px);
-    width: 1000px;
+    height: 85vh;
+    width: 70vw;
     max-width: 90vw;
 
     border-radius: 3px;
@@ -176,15 +209,15 @@ button.active {
 .scrollWrapper {
     overflow-y: scroll;
     overflow-x: hidden;
-    height: calc(80vh - 70px);
-    padding-right: 15px;
+    height: 80vh;
+    padding-right: 1vw;
 }
 
 .scrollWrapper::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px #636e74;
-    -webkit-box-shadow: inset 0 0 6px #636e74;
+    -webkit-box-shadow: inset 0 0 6px #84939b;
     border-radius: 4px;
-    background-color: #636e74;
+    background-color: #6f7b81;
 }
 
 .scrollWrapper::-webkit-scrollbar {
@@ -204,7 +237,7 @@ button.active {
 }
 
 .collapsibleWrapper {
-    margin: 1.2rem 0;
+    margin: 1vh 0;
 }
 
 .collapsibleLabel {
@@ -314,9 +347,10 @@ button.active {
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.7);
-    transition: opacity 500ms;
+    transition: opacity 0.5s, visibility 0.5s;
     visibility: hidden;
     opacity: 0;
+    overflow: auto;
 }
 
 .overlay:target {
@@ -325,24 +359,20 @@ button.active {
 }
 
 .popup {
-    margin: 70px auto;
+    margin: 5vh auto;
     padding: 20px;
     background: #fff;
     border-radius: 5px;
-    width: 50%;
+    min-width: 700px;
+    width: 50vw;
+    max-width: 1200px;
     position: relative;
-    transition: all 5s ease-in-out;
 }
 
 .popup h2 {
     margin-top: 0;
     color: #333;
     font-family: Tahoma, Arial, sans-serif;
-}
-
-.popup .content {
-    max-height: 30%;
-    overflow: auto;
 }
 
 #cancelButtonPOPUP {

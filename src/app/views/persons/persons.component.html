@@ -47,7 +47,7 @@
                                 <button class="deleteButton" id="deleteButton"
                                     (click)="deletePerson(person.ID)">Löschen</button>
                                 <button class="saveButton" id="saveButton"
-                                    (click)="updatePerson(person.ID)">Speichern</button>
+                                    (click)="updatePerson(person.ID)">Ändern</button>
                             </div>
                         </div>
                     </div>
@@ -61,28 +61,26 @@
 <div id="createNewPerson" class="overlay">
     <div class="popup">
         <h2>Neue Person erstellen</h2>
-        <div class="content">
-            <div class="contentBody">
-                <div>
-                    <label for="firstName" class="bodyInputLabel">Vorname</label>
-                    <input type="text" id="firstName" class="input" [(ngModel)]="newPerson.FirstName">
-                </div>
+        <div class="contentBody">
+            <div>
+                <label for="firstName" class="bodyInputLabel">Vorname</label>
+                <input type="text" id="firstName" class="input" [(ngModel)]="newPerson.FirstName">
+            </div>
 
-                <div>
-                    <label for="lastName" class="bodyInputLabel">Name</label>
-                    <input type="text" id="lastName" class="input" [(ngModel)]="newPerson.LastName">
-                </div>
+            <div>
+                <label for="lastName" class="bodyInputLabel">Name</label>
+                <input type="text" id="lastName" class="input" [(ngModel)]="newPerson.LastName">
+            </div>
 
-                <div>
-                    <label for="company" class="bodyInputLabel">Firma</label>
-                    <input type="text" id="company" class="input" [(ngModel)]="newPerson.Company">
-                </div>
+            <div>
+                <label for="company" class="bodyInputLabel">Firma</label>
+                <input type="text" id="company" class="input" [(ngModel)]="newPerson.Company">
+            </div>
 
-                <div class="bodyActions">
-                    <a class="cancelButton button" id="cancelButtonPOPUP" href="/persons#">Abbrechen</a>
-                    <a class="saveButton button" id="saveButtonPOPUP" href="/persons#"
-                        (click)="createPerson(newPerson)">Speichern</a>
-                </div>
+            <div class="bodyActions">
+                <a class="cancelButton button" id="cancelButtonPOPUP" href="/persons#">Abbrechen</a>
+                <a class="saveButton button" id="saveButtonPOPUP" href="/persons#"
+                    (click)="createPerson(newPerson)">Speichern</a>
             </div>
         </div>
     </div>

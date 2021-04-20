@@ -1,37 +1,8 @@
 @import "../../../styles.scss";
 
-.login-wrapper {
-    padding: 40px;
-    background-color: #636e74;
-    width: 350px;
-
-    border-radius: 3px;
-
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
-}
-
-.flex-item {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.flex-itemHalf {
-    width: 50%;
-    height: 40px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
 #top-text {
     text-align: center;
     margin-bottom: 25px;
-}
-
-.actionButtons {
-    margin-top: 35px;
 }
 
 .flex-item > span {
@@ -41,54 +12,13 @@
     text-align: center;
 }
 
-input {
+.flex-item input {
     width: 90%;
-    height: 100%;
-    border-radius: 5px;
-    font-size: 20pt;
 }
 
-input:focus {
-    outline: none;
-}
-
-label {
-    line-height: 40px;
-    font-size: 19pt;
-}
-
-button {
-    height: 50px;
-    width: 165px;
-    font-size: 20px;
-    border-radius: 3px;
-    color: black;
-    border: none;
-    box-shadow: none;
-    transition: box-shadow 0.5s, background-color 0.5s, color 0.5s;
-}
-
-button:hover {
-    transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
-}
-
-button.active {
-    transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
-}
-
-.loginButton {
-    background-color: hsl(170, 71%, 70%);
-}
-
-.loginButton:hover {
-    background-color: hsl(170, 34%, 53%);
-    box-shadow: -0px -0px 50px rgb(118, 255, 232) inset;
-}
-
-.loginAsGuestButton {
-    background-color: hsl(0, 0%, 73%);
-}
-.loginAsGuestButton:hover {
-    background-color: hsl(0, 0%, 62%);
-    box-shadow: -0px -0px 50px hsl(0, 0%, 83%) inset;
+.actionButtons {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -83,7 +83,7 @@
                                 <button class="deleteButton" id="deleteButton"
                                     (click)="deleteDevice(device.ID)">Löschen</button>
                                 <button class="saveButton" id="saveButton"
-                                    (click)="updateDevice(device.ID)">Speichern</button>
+                                    (click)="updateDevice(device.ID)">Ändern</button>
                             </div>
                         </div>
                     </div>
@@ -97,59 +97,57 @@
 <div id="createNewDevice" class="overlay">
     <div class="popup">
         <h2>Neues Gerät erstellen</h2>
-        <div class="content">
-            <div class="contentBody">
-                <div>
-                    <label for="label" class="bodyInputLabel">Label</label>
-                    <input type="text" id="label" class="input" [(ngModel)]="newDevice.Label">
-                </div>
+        <div class="contentBody">
+            <div>
+                <label for="label" class="bodyInputLabel">Label</label>
+                <input type="text" id="label" class="input" [(ngModel)]="newDevice.Label">
+            </div>
 
-                <div>
-                    <label for="descriptiveInformation" class="bodyInputLabel">DescriptiveInformation</label>
-                    <input type="text" id="descriptiveInformation" class="input"
-                        [(ngModel)]="newDevice.DescriptiveInformation">
-                </div>
+            <div>
+                <label for="descriptiveInformation" class="bodyInputLabel">DescriptiveInformation</label>
+                <input type="text" id="descriptiveInformation" class="input"
+                    [(ngModel)]="newDevice.DescriptiveInformation">
+            </div>
 
-                <div>
-                    <label for="serialNumber" class="bodyInputLabel">SerialNumber</label>
-                    <input type="text" id="serialNumber" class="input" [(ngModel)]="newDevice.SerialNumber">
-                </div>
+            <div>
+                <label for="serialNumber" class="bodyInputLabel">SerialNumber</label>
+                <input type="text" id="serialNumber" class="input" [(ngModel)]="newDevice.SerialNumber">
+            </div>
 
-                <div>
-                    <label for="manufacturer" class="bodyInputLabel">Manufacturer</label>
-                    <input type="text" id="manufacturer" class="input" [(ngModel)]="newDevice.Manufacturer">
-                </div>
+            <div>
+                <label for="manufacturer" class="bodyInputLabel">Manufacturer</label>
+                <input type="text" id="manufacturer" class="input" [(ngModel)]="newDevice.Manufacturer">
+            </div>
 
-                <div>
-                    <label for="model" class="bodyInputLabel">Model</label>
-                    <input type="text" id="model" class="input" [(ngModel)]="newDevice.Model">
-                </div>
+            <div>
+                <label for="model" class="bodyInputLabel">Model</label>
+                <input type="text" id="model" class="input" [(ngModel)]="newDevice.Model">
+            </div>
 
-                <div>
-                    <label for="rentStart" class="bodyInputLabel">RentStart</label>
-                    <input type="date" id="rentStart" class="input" [(ngModel)]="newDevice.RentStart">
-                </div>
+            <div>
+                <label for="rentStart" class="bodyInputLabel">RentStart</label>
+                <input type="date" id="rentStart" class="input" [(ngModel)]="newDevice.RentStart">
+            </div>
 
-                <div>
-                    <label for="expectedReturn" class="bodyInputLabel">ExpectedReturn</label>
-                    <input type="date" id="expectedReturn" class="input" [(ngModel)]="newDevice.ExpectedReturn">
-                </div>
+            <div>
+                <label for="expectedReturn" class="bodyInputLabel">ExpectedReturn</label>
+                <input type="date" id="expectedReturn" class="input" [(ngModel)]="newDevice.ExpectedReturn">
+            </div>
 
-                <div>
-                    <label for="locationID" class="bodyInputLabel">LocationID</label>
-                    <input type="text" id="locationID" class="input" [(ngModel)]="newDevice.LocationID">
-                </div>
+            <div>
+                <label for="locationID" class="bodyInputLabel">LocationID</label>
+                <input type="text" id="locationID" class="input" [(ngModel)]="newDevice.LocationID">
+            </div>
 
-                <div>
-                    <label for="personID" class="bodyInputLabel">PersonID</label>
-                    <input type="text" id="personID" class="input" [(ngModel)]="newDevice.PersonID">
-                </div>
+            <div>
+                <label for="personID" class="bodyInputLabel">PersonID</label>
+                <input type="text" id="personID" class="input" [(ngModel)]="newDevice.PersonID">
+            </div>
 
-                <div class="bodyActions">
-                    <a class="cancelButton button" id="cancelButtonPOPUP" href="/devices#">Abbrechen</a>
-                    <a class="saveButton button" id="saveButtonPOPUP" href="/devices#"
-                        (click)="createDevice(newDevice)">Speichern</a>
-                </div>
+            <div class="bodyActions">
+                <a class="cancelButton button" id="cancelButtonPOPUP" href="/devices#">Abbrechen</a>
+                <a class="saveButton button" id="saveButtonPOPUP" href="/devices#"
+                    (click)="createDevice(newDevice)">Speichern</a>
             </div>
         </div>
     </div>
