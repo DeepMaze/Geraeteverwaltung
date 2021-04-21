@@ -1,13 +1,13 @@
 @import "../styles.scss";
 
 .navigation {
-    background-color: #4f7181;
+    background-color: $header_background;
     overflow: hidden;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    color: $primary-100;
+    color: $header_textColor;
     font-size: 20px;
     height: 8vh;
 }
@@ -28,8 +28,8 @@
 
 .navigation .navigationRight a {
     display: block;
-    background-color: #46606d;
-    color: white;
+    background-color: $navLink_background;
+    color: $navLink_colorText;
     text-align: center;
     text-decoration: none;
     font-size: 20px;
@@ -41,16 +41,16 @@
 }
 
 .navigation .navigationRight a:hover {
-    color: $primary-900;
-    background-color: $primary-400;
-    box-shadow: -0px -0px 10px $primary-700 inset;
+    color: $navLink_colorTextHover;
+    background-color: $navLink_backgroundHover;
+    box-shadow: -0px -0px 10px $navLink_shadowHover inset;
     transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
 }
 
 .navigation .navigationRight a.active {
-    color: $primary-900;
-    background-color: $primary-300;
-    box-shadow: -0px -0px 10px $primary-700 inset;
+    color: $navLink_colorTextActive;
+    background-color: $navLink_backgroundActive;
+    box-shadow: -0px -0px 10px $navLink_shadowActive inset;
     transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
 }
 
@@ -58,13 +58,10 @@
     position: fixed;
     left: 0;
     top: 8vh;
-
     height: 92vh;
     width: 100vw;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background: #4d5559;
+    background: $pageContainer_background;
 }
