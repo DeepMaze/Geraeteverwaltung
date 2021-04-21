@@ -1,4 +1,5 @@
 @import "../styles.scss";
+@import "../assets/scss/popup.scss";
 
 .navigation {
     background-color: $header_background;
@@ -30,6 +31,7 @@
     display: block;
     background-color: $navLink_background;
     color: $navLink_colorText;
+    fill: $navLink_colorText;
     text-align: center;
     text-decoration: none;
     font-size: 20px;
@@ -42,6 +44,7 @@
 
 .navigation .navigationRight a:hover {
     color: $navLink_colorTextHover;
+    fill: $navLink_colorTextHover;
     background-color: $navLink_backgroundHover;
     box-shadow: -0px -0px 10px $navLink_shadowHover inset;
     transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
@@ -49,6 +52,7 @@
 
 .navigation .navigationRight a.active {
     color: $navLink_colorTextActive;
+    fill: $navLink_colorTextActive;
     background-color: $navLink_backgroundActive;
     box-shadow: -0px -0px 10px $navLink_shadowActive inset;
     transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
