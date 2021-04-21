@@ -245,7 +245,7 @@ button.active {
     display: block;
     overflow: hidden;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 5px 5px 0px 0px;
     background-color: #4f7181;
     box-shadow: 0px 0px 35px #7aaac1 inset;
     font-weight: bold;
@@ -295,8 +295,7 @@ button.active {
 
     background-color: $info-100;
     border-bottom: 1px solid $info-400;
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
+    border-radius: 0px 0px 5px 5px;
 }
 
 .contentTitle {
