@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from 'src/app/service/api.service';
 import { Device } from '../../interfaces/device.interface';
+import { Location } from '../../interfaces/location.interface'
+import { Person } from '../../interfaces/person.interface'
 
 @Component({
     selector: 'app-devices',
@@ -12,6 +14,10 @@ export class DevicesComponent implements OnInit {
 
     public deviceList: Array<Device> = [];
     public mutableFilteredDeviceList: Array<Device> = [];
+    public locationList: Array<Location> = [];
+    public filteredLocationList: Array<Location> = [];
+    public personList: Array<Person> = [];
+    public filteredPersonList: Array<Person> = [];
 
     public filterValue: string = '';
 
@@ -19,8 +25,10 @@ export class DevicesComponent implements OnInit {
 
     constructor(private apiService: ApiService) { }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.prepareDeviceList();
+        this.prepareLocationList();
+        this.preparePersonList();
     }
 
     private clearDevice(): Device {
@@ -41,10 +49,33 @@ export class DevicesComponent implements OnInit {
     private prepareDeviceList(): void {
         this.apiService.getDeviceList().toPromise()
             .then((deviceList: Array<Device>) => {
-                if (deviceList && deviceList.length != 0) {
-                    this.deviceList = JSON.parse(JSON.stringify(deviceList));
-                    this.mutableFilteredDeviceList = JSON.parse(JSON.stringify(deviceList));
-                }
+                if (!deviceList || deviceList.length == 0) { return }
+                this.deviceList = JSON.parse(JSON.stringify(deviceList));
+                this.mutableFilteredDeviceList = JSON.parse(JSON.stringify(deviceList));
+            })
+            .catch((err: any) => {
+                window.alert('Geräte Liste konnte nicht abgefragt werden!')
+            });
+    }
+
+    private prepareLocationList(): void {
+        this.apiService.getLocationList().toPromise()
+            .then((locationList: Array<Location>) => {
+                if (!locationList || locationList.length == 0) { return }
+                this.locationList = JSON.parse(JSON.stringify(locationList));
+                this.filteredLocationList = JSON.parse(JSON.stringify(locationList));
+            })
+            .catch((err: any) => {
+                window.alert('Geräte Liste konnte nicht abgefragt werden!')
+            });
+    }
+
+    private preparePersonList(): void {
+        this.apiService.getPersonList().toPromise()
+            .then((personList: Array<Person>) => {
+                if (!personList || personList.length == 0) { return }
+                this.personList = JSON.parse(JSON.stringify(personList));
+                this.filteredPersonList = JSON.parse(JSON.stringify(personList));
             })
             .catch((err: any) => {
                 window.alert('Geräte Liste konnte nicht abgefragt werden!')
@@ -87,6 +118,7 @@ export class DevicesComponent implements OnInit {
         if (device.ExpectedReturn != '') {
             device.ExpectedReturn = this.converDateToYMD(new Date(device.ExpectedReturn));
         }
+        console.log(device);
         this.apiService.updateDevice(device).toPromise()
             .then((result: any) => {
                 window.alert('Änderungen wurde gespeichert!');
