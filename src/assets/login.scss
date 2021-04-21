@@ -1,0 +1,20 @@
+.auth-wrapper {
+    padding: 20px;
+    background-color: $container_background;
+    width: 400px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.flex-item {
+    margin-bottom: 10px;
+}
+
+.flex-itemHalf {
+    height: 40px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
