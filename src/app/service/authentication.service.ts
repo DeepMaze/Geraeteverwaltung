@@ -25,6 +25,9 @@ export class AuthenticationService {
         this.localStorage.watch('token').subscribe((result) => {
             this.loggedIn = !!result;
         });
+        this.localStorage.watch('userName').subscribe((result) => {
+            this.asGuest = result.toLowerCase() == 'guest';
+        });
     }
 
     public async login(loginData: LoginData): Promise<boolean> {
@@ -36,6 +39,7 @@ export class AuthenticationService {
         if (!loginResult) {
             return false;
         }
+        this.asGuest = loginResult.userName.toLowerCase() == 'guest';
         this.localStorage.set('userID', loginResult.userID);
         this.localStorage.set('userName', loginResult.userName);
         this.localStorage.set('token', loginResult.token);

@@ -27,7 +27,7 @@ export class CreateUserComponent implements OnInit {
     }
 
     public createUser(): void {
-        if (this.loginData.userName == 'Guest' || this.loginData.userName == 'Admin') {
+        if (this.loginData.userName.toLowerCase() == 'guest' || this.loginData.userName.toLowerCase() == 'admin') {
             window.alert('\'Guest\' und \'Admin\' können nicht als Benutzername gewählt werden.');
             return;
         }

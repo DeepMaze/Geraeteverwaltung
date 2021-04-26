@@ -3,7 +3,7 @@
         <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
             (keyup)="prepareFilter($event)">
         <a class="createNewButton button" href="/devices#createNewDevice"
-            [class.disabledLink]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">Neues
+            *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Neues
             Gerät</a>
     </div>
 
@@ -102,9 +102,9 @@
                             <div class="bodyActions">
                                 <button class="cancelButton" id="cancelButton" (click)="cancel(i)">Abbrechen</button>
                                 <button class="deleteButton" id="deleteButton"
-                                    (click)="deleteDevice(device.ID)">Löschen</button>
+                                    (click)="deleteDevice(device.ID)" *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Löschen</button>
                                 <button class="saveButton" id="saveButton"
-                                    (click)="updateDevice(device.ID)">Ändern</button>
+                                    (click)="updateDevice(device.ID)" *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Ändern</button>
                             </div>
                         </div>
                     </div>

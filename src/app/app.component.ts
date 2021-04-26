@@ -36,9 +36,18 @@ export class AppComponent {
         this.localStorage.initiateStorage();
         this.router.events.subscribe((event: any) => {
             if (event instanceof NavigationEnd) {
-                this.currentURL = this.sanitizeCurrentURL(event.url);
+                this.currentURL = event.url.split('#')[0];
                 let newTitle = this.routeTitles.find(route => { return route.route === event.url }) || { title: "undefined" };
                 this.title = newTitle.title;
+                console.log('url: ', event.url);
+                console.log('length: ', event.url.split('#').length);
+                console.log('asGuest: ', this.authService.asGuest);
+                console.log('enableGuestDataManipulation: ', this.configService.config.enableGuestDataManipulation);
+
+                if (event.url.split('#').length >= 2 && this.authService.asGuest && !this.configService.config.enableGuestDataManipulation) {
+                    console.log('1');
+                    this.router.navigateByUrl(this.currentURL);
+                }
             }
         })
     }
@@ -49,9 +58,5 @@ export class AppComponent {
 
     public logout(): void {
         this.authService.logout();
-    }
-
-    private sanitizeCurrentURL(url: string): string {
-        return url.split('#')[0];
     }
 }
