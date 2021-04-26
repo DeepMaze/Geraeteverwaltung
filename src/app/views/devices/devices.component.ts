@@ -118,7 +118,6 @@ export class DevicesComponent implements OnInit {
         if (device.ExpectedReturn != '') {
             device.ExpectedReturn = this.converDateToYMD(new Date(device.ExpectedReturn));
         }
-        console.log(device);
         this.apiService.updateDevice(device).toPromise()
             .then((result: any) => {
                 window.alert('Änderungen wurde gespeichert!');

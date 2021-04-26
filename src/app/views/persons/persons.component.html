@@ -2,7 +2,7 @@
     <div class="filterWrapper">
         <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
             (keyup)="prepareFilter($event)">
-        <a class="createNewButton button" href="/persons#createNewPerson">Person hinzufügen</a>
+        <a class="createNewButton button" href="/persons#createNewPerson">Neue Person</a>
     </div>
 
     <ng-container *ngIf="mutableFilteredPersonList.length == 0">

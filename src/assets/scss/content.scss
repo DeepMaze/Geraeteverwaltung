@@ -134,7 +134,7 @@ label {
     padding: 0.5rem 1rem;
 }
 
-.contentBody div {
+.contentBody > div {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -142,7 +142,7 @@ label {
     width: 100%;
 }
 
-.contentBody div label {
+.contentBody > div > label {
     margin: 5px;
     padding: 0 5px;
     height: 40px;
@@ -151,7 +151,7 @@ label {
     line-height: 40px;
 }
 
-.contentBody div input {
+.contentBody > div input {
     outline: none;
     margin: 5px;
     height: 40px;

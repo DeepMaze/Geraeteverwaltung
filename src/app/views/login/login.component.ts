@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../../service/authentication.service';
 import { LoginData } from 'src/app/interfaces/login-data.interface';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent {
 
     constructor(
         private router: Router,
-        private authService: AuthenticationService
+        private authService: AuthenticationService,
+        public configService: ConfigService
     ) { }
 
     public async prepareLogin(asGuest: boolean = false): Promise<void> {

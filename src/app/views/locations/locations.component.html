@@ -2,7 +2,7 @@
     <div class="filterWrapper">
         <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
             (keyup)="prepareFilter($event)">
-        <a class="createNewButton button" href="/locations#createNewLocation">Standort hinzufügen</a>
+        <a class="createNewButton button" href="/locations#createNewLocation">Neuer Standort</a>
     </div>
 
     <ng-container *ngIf="mutableFilteredLocationList.length == 0">

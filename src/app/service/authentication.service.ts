@@ -12,6 +12,7 @@ import { UserData } from '../interfaces/user-data.interface';
 export class AuthenticationService {
 
     public loggedIn: boolean = false;
+    public asGuest: boolean = false;
 
     constructor(
         private localStorage: LocalStorageService,

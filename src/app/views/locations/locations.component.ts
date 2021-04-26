@@ -40,7 +40,6 @@ export class LocationsComponent implements OnInit {
                 if (locationList && locationList.length != 0) {
                     this.locationList = JSON.parse(JSON.stringify(locationList));
                     this.mutableFilteredLocationList = JSON.parse(JSON.stringify(locationList));
-                    console.log("locationList: ", locationList);
                 }
             })
             .catch((err: any) => {

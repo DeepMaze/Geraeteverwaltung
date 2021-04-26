@@ -31,6 +31,19 @@
     margin-top: 0;
 }
 
+.contentBody > div {
+    display: flex;
+}
+
+.contentBody > .bodyActions {
+    margin-top: 10px;
+}
+
+#saveButtonPOPUP,
+#cancelButtonPOPUP {
+    text-decoration: none;
+}
+
 #cancelButtonPOPUP {
     margin: 0 auto 0 20px;
 }

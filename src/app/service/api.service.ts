@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import { Device } from '../interfaces/device.interface';
-import { LoginData } from '../interfaces/login-data.interface';
-import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
 import { LocalStorageService } from './local-storage.service';
+import { Config } from '../interfaces/config.interface';
+import { LoginData } from '../interfaces/login-data.interface';
+import { Device } from '../interfaces/device.interface';
 import { Location } from '../interfaces/location.interface';
 import { Person } from '../interfaces/person.interface';
 
@@ -18,6 +19,33 @@ export class ApiService {
         private httpClient: HttpClient,
         private localStorage: LocalStorageService
     ) { }
+
+    // Config API calls
+
+    public getConfig(): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID')
+        };
+        try {
+            return this.httpClient.get(`${environment.apiUrl}/config/getConfig`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    public saveConfig(config: Config): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID'),
+            config: JSON.stringify(config)
+        };
+        try {
+            return this.httpClient.post(`${environment.apiUrl}/config/updateConfig`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
 
     // Login API calls
 

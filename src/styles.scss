@@ -6,19 +6,23 @@ body {
     margin: 0;
 }
 
-input {
-    padding: 0 15px;
+input[type="text"],
+input[type="password"],
+input[type="date"] {
+    padding: 0 10px;
     background-color: $input_backgroundColor;
     border: 2px solid $input_borderColor;
     border-radius: 5px;
     box-shadow: 0 0 2px $input_boxShadow inset;
-    width: 100%;
+    width: calc(100% - 10px);
     height: 100%;
     border-radius: 5px;
     font-size: 20pt;
 }
 
-input:focus {
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus {
     box-shadow: 0 0 5px $input_boxShadow inset;
     outline: none;
 }
@@ -39,12 +43,15 @@ button,
     transition: box-shadow 0.5s, background-color 0.5s, color 0.5s;
 }
 
-button:hover {
+button:hover,
+.button:hover {
     outline: none;
     transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
+    cursor: pointer;
 }
 
-button.active {
+button.active,
+.button:hover {
     outline: none;
     transition: box-shadow 0.5s, background-color 0.5s, color 0.1s;
 }

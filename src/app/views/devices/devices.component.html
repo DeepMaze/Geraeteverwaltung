@@ -2,7 +2,7 @@
     <div class="filterWrapper">
         <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
             (keyup)="prepareFilter($event)">
-        <a class="createNewButton button" href="/devices#createNewDevice">Gerät hinzufügen</a>
+        <a class="createNewButton button" href="/devices#createNewDevice">Neues Gerät</a>
     </div>
 
     <ng-container *ngIf="mutableFilteredDeviceList.length == 0">
