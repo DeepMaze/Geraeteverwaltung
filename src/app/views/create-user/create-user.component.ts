@@ -27,6 +27,10 @@ export class CreateUserComponent implements OnInit {
     }
 
     public createUser(): void {
+        if (this.loginData.userName == 'Guest' || this.loginData.userName == 'Admin') {
+            window.alert('\'Guest\' und \'Admin\' können nicht als Benutzername gewählt werden.');
+            return;
+        }
         try {
             this.apiService.createUser(this.loginData).toPromise();
         } catch (err) {

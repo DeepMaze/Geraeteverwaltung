@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from 'src/app/service/api.service';
+import { AuthenticationService } from 'src/app/service/authentication.service';
+import { ConfigService } from 'src/app/service/config.service';
 import { Location } from "../../interfaces/location.interface";
 
 @Component({
@@ -17,7 +19,10 @@ export class LocationsComponent implements OnInit {
 
     public newLocation: Location = this.clearLocation();
 
-    constructor(private apiService: ApiService) { }
+    constructor(
+        private apiService: ApiService,
+        public authService: AuthenticationService,
+        public configService: ConfigService) { }
 
     ngOnInit(): void {
         this.prepareLocationList();

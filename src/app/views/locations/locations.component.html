@@ -2,7 +2,9 @@
     <div class="filterWrapper">
         <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
             (keyup)="prepareFilter($event)">
-        <a class="createNewButton button" href="/locations#createNewLocation">Neuer Standort</a>
+        <a class="createNewButton button" href="/locations#createNewLocation"
+            [class.disabledLink]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">Neuer
+            Standort</a>
     </div>
 
     <ng-container *ngIf="mutableFilteredLocationList.length == 0">
@@ -28,30 +30,35 @@
 
                             <div>
                                 <label [attr.for]="'label' + i" class="bodyInputLabel">Name</label>
-                                <input type="text" [attr.id]="'label' + i" class="input" [(ngModel)]="location.Label">
+                                <input type="text" [attr.id]="'label' + i" class="input" [(ngModel)]="location.Label"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div>
                                 <label [attr.for]="'descriptiveInformation' + i"
                                     class="bodyInputLabel">Beschreibung</label>
                                 <input type="text" [attr.id]="'descriptiveInformation' + i" class="input"
-                                    [(ngModel)]="location.DescriptiveInformation">
+                                    [(ngModel)]="location.DescriptiveInformation"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div>
                                 <label [attr.for]="'postalcode' + i" class="bodyInputLabel">PLZ</label>
                                 <input type="text" [attr.id]="'postalcode' + i" class="input"
-                                    [(ngModel)]="location.Postalcode">
+                                    [(ngModel)]="location.Postalcode"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div>
                                 <label [attr.for]="'city' + i" class="bodyInputLabel">Stadt</label>
-                                <input type="text" [attr.id]="'city' + i" class="input" [(ngModel)]="location.City">
+                                <input type="text" [attr.id]="'city' + i" class="input" [(ngModel)]="location.City"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div>
                                 <label [attr.for]="'street' + i" class="bodyInputLabel">Straße</label>
-                                <input type="text" [attr.id]="'street' + i" class="input" [(ngModel)]="location.Street">
+                                <input type="text" [attr.id]="'street' + i" class="input" [(ngModel)]="location.Street"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div class="bodyActions">
@@ -70,7 +77,8 @@
 </div>
 
 
-<div id="createNewLocation" class="overlay">
+<div [id]="(!!authService.asGuest && !configService.config.enableGuestDataManipulation) ? ('') : ('createNewLocation')"
+    class="overlay">
     <div class="popup">
         <h2>Neuen Standort erstellen</h2>
         <div class="contentBody">

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from 'src/app/service/api.service';
 import { Person } from 'src/app/interfaces/person.interface';
+import { ConfigService } from 'src/app/service/config.service';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 
 @Component({
     selector: 'app-persons',
@@ -17,7 +19,10 @@ export class PersonsComponent implements OnInit {
 
     public newPerson: Person = this.clearPerson();
 
-    constructor(private apiService: ApiService) { }
+    constructor(
+        private apiService: ApiService,
+        public authService: AuthenticationService,
+        public configService: ConfigService) { }
 
     ngOnInit(): void {
         this.preparePersonList();

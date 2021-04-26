@@ -2,7 +2,9 @@
     <div class="filterWrapper">
         <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
             (keyup)="prepareFilter($event)">
-        <a class="createNewButton button" href="/persons#createNewPerson">Neue Person</a>
+        <a class="createNewButton button" href="/persons#createNewPerson"
+            [class.disabledLink]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">Neue
+            Person</a>
     </div>
 
     <ng-container *ngIf="mutableFilteredPersonList.length == 0">
@@ -28,18 +30,21 @@
                             <div>
                                 <label [attr.for]="'firstName' + i" class="bodyInputLabel">Vorname</label>
                                 <input type="text" [attr.id]="'firstName' + i" class="input"
-                                    [(ngModel)]="person.FirstName">
+                                    [(ngModel)]="person.FirstName"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div>
                                 <label [attr.for]="'lastName' + i" class="bodyInputLabel">Nachnamen</label>
                                 <input type="text" [attr.id]="'lastName' + i" class="input"
-                                    [(ngModel)]="person.LastName">
+                                    [(ngModel)]="person.LastName"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div>
                                 <label [attr.for]="'company' + i" class="bodyInputLabel">Firma</label>
-                                <input type="text" [attr.id]="'company' + i" class="input" [(ngModel)]="person.Company">
+                                <input type="text" [attr.id]="'company' + i" class="input" [(ngModel)]="person.Company"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div class="bodyActions">
@@ -58,7 +63,7 @@
 </div>
 
 
-<div id="createNewPerson" class="overlay">
+<div [id]="(!!authService.asGuest && !configService.config.enableGuestDataManipulation) ? ('') : ('createNewPerson')" class="overlay">
     <div class="popup">
         <h2>Neue Person erstellen</h2>
         <div class="contentBody">

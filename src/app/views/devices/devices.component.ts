@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from 'src/app/service/api.service';
+import { AuthenticationService } from 'src/app/service/authentication.service';
+import { ConfigService } from 'src/app/service/config.service';
 import { Device } from '../../interfaces/device.interface';
 import { Location } from '../../interfaces/location.interface'
 import { Person } from '../../interfaces/person.interface'
@@ -23,7 +25,10 @@ export class DevicesComponent implements OnInit {
 
     public newDevice: Device = this.clearDevice();
 
-    constructor(private apiService: ApiService) { }
+    constructor(
+        private apiService: ApiService,
+        public authService: AuthenticationService,
+        public configService: ConfigService) { }
 
     public ngOnInit(): void {
         this.prepareDeviceList();

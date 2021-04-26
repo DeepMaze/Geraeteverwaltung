@@ -107,3 +107,8 @@ button.active,
 .flex-itemHalf {
     width: 50%;
 }
+
+.disabledLink {
+    pointer-events: none;
+    cursor: default;
+}

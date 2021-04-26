@@ -2,7 +2,9 @@
     <div class="filterWrapper">
         <input type="text" class="input filterInput" placeholder="Filter" [(ngModel)]="filterValue"
             (keyup)="prepareFilter($event)">
-        <a class="createNewButton button" href="/devices#createNewDevice">Neues Gerät</a>
+        <a class="createNewButton button" href="/devices#createNewDevice"
+            [class.disabledLink]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">Neues
+            Gerät</a>
     </div>
 
     <ng-container *ngIf="mutableFilteredDeviceList.length == 0">
@@ -27,49 +29,57 @@
 
                             <div class="body-label">
                                 <label [attr.for]="'label' + i" class="bodyInputLabel">Name</label>
-                                <input type="text" [attr.id]="'label' + i" class="input" [(ngModel)]="device.Label">
+                                <input type="text" [attr.id]="'label' + i" class="input" [(ngModel)]="device.Label"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div class="body-desciptiveInformation">
                                 <label [attr.for]="'descriptiveInformation' + i"
                                     class="bodyInputLabel">Beschreibung</label>
                                 <input type="text" [attr.id]="'descriptiveInformation' + i" class="input"
-                                    [(ngModel)]="device.DescriptiveInformation">
+                                    [(ngModel)]="device.DescriptiveInformation"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div class="body-serialNumber">
                                 <label [attr.for]="'serialNumber' + i" class="bodyInputLabel">Seriennummer</label>
                                 <input type="text" [attr.id]="'serialNumber' + i" class="input"
-                                    [(ngModel)]="device.SerialNumber">
+                                    [(ngModel)]="device.SerialNumber"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div class="body-manufacturer">
                                 <label [attr.for]="'manufacturer' + i" class="bodyInputLabel">Hersteller</label>
                                 <input type="text" [attr.id]="'manufacturer' + i" class="input"
-                                    [(ngModel)]="device.Manufacturer">
+                                    [(ngModel)]="device.Manufacturer"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div class="body-manufacturer">
                                 <label [attr.for]="'model' + i" class="bodyInputLabel">Modell</label>
-                                <input type="text" [attr.id]="'model' + i" class="input" [(ngModel)]="device.Model">
+                                <input type="text" [attr.id]="'model' + i" class="input" [(ngModel)]="device.Model"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div class="body-rentStart">
                                 <label [attr.for]="'rentStart' + i" class="bodyInputLabel">Verleihstart</label>
                                 <input type="date" [attr.id]="'rentStart' + i" class="input"
-                                    [(ngModel)]="device.RentStart">
+                                    [(ngModel)]="device.RentStart"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div class="body-expectedReturn">
                                 <label [attr.for]="'expectedReturn' + i" class="bodyInputLabel">Verleihende</label>
                                 <input type="date" [attr.id]="'expectedReturn' + i" class="input"
-                                    [(ngModel)]="device.ExpectedReturn">
+                                    [(ngModel)]="device.ExpectedReturn"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
                             <div class="body-locationID">
                                 <label [attr.for]="'locationID' + i" class="bodyInputLabel">Standort</label>
                                 <input type="text" [attr.list]="'locations' + i" [attr.id]="'locationID' + i"
-                                    class="input" [(ngModel)]="device.LocationID">
+                                    class="input" [(ngModel)]="device.LocationID"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                                 <datalist [attr.id]="'locations' + i">
                                     <option *ngFor="let location of filteredLocationList" [value]="location.ID">
                                         {{ location.Label }}
@@ -80,7 +90,8 @@
                             <div class="body-personID">
                                 <label [attr.for]="'personID' + i" class="bodyInputLabel">Person</label>
                                 <input type="text" [attr.list]="'persons' + i" [attr.id]="'personID' + i" class="input"
-                                    [(ngModel)]="device.PersonID">
+                                    [(ngModel)]="device.PersonID"
+                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                                 <datalist [attr.id]="'persons' + i">
                                     <option *ngFor="let person of filteredPersonList" [value]="person.ID">
                                         {{ person.FirstName + ', ' + person.LastName }}
@@ -104,7 +115,8 @@
 </div>
 
 
-<div id="createNewDevice" class="overlay">
+<div [id]="(!!authService.asGuest && !configService.config.enableGuestDataManipulation) ? ('') : ('createNewDevice')"
+    class="overlay">
     <div class="popup">
         <h2>Neues Gerät erstellen</h2>
         <div class="contentBody">
