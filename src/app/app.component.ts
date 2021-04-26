@@ -39,13 +39,7 @@ export class AppComponent {
                 this.currentURL = event.url.split('#')[0];
                 let newTitle = this.routeTitles.find(route => { return route.route === event.url }) || { title: "undefined" };
                 this.title = newTitle.title;
-                console.log('url: ', event.url);
-                console.log('length: ', event.url.split('#').length);
-                console.log('asGuest: ', this.authService.asGuest);
-                console.log('enableGuestDataManipulation: ', this.configService.config.enableGuestDataManipulation);
-
                 if (event.url.split('#').length >= 2 && this.authService.asGuest && !this.configService.config.enableGuestDataManipulation) {
-                    console.log('1');
                     this.router.navigateByUrl(this.currentURL);
                 }
             }
