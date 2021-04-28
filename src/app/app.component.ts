@@ -23,6 +23,7 @@ export class AppComponent {
         { route: "/devices", title: "Geräteverwaltung" },
         { route: "/locations", title: "Geschäftsstellenverwaltung" },
         { route: "/users", title: "Benutzerverwaltung" },
+        { route: "/persons", title: "Personenverwaltung" }
     ]
 
     constructor(

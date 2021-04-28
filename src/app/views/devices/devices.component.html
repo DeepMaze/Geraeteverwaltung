@@ -61,27 +61,13 @@
                                     [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                             </div>
 
-                            <div class="body-rentStart">
-                                <label [attr.for]="'rentStart' + i" class="bodyInputLabel">Verleihstart</label>
-                                <input type="date" [attr.id]="'rentStart' + i" class="input"
-                                    [(ngModel)]="device.RentStart"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
-
-                            <div class="body-expectedReturn">
-                                <label [attr.for]="'expectedReturn' + i" class="bodyInputLabel">Verleihende</label>
-                                <input type="date" [attr.id]="'expectedReturn' + i" class="input"
-                                    [(ngModel)]="device.ExpectedReturn"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
-
                             <div class="body-locationID">
                                 <label [attr.for]="'locationID' + i" class="bodyInputLabel">Standort</label>
                                 <input type="text" [attr.list]="'locations' + i" [attr.id]="'locationID' + i"
                                     class="input" [(ngModel)]="device.LocationID"
                                     [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                                 <datalist [attr.id]="'locations' + i">
-                                    <option *ngFor="let location of filteredLocationList" [value]="location.ID">
+                                    <option *ngFor="let location of filteredLocationList" [value]="location.Label">
                                         {{ location.Label }}
                                     </option>
                                 </datalist>
@@ -93,7 +79,7 @@
                                     [(ngModel)]="device.PersonID"
                                     [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
                                 <datalist [attr.id]="'persons' + i">
-                                    <option *ngFor="let person of filteredPersonList" [value]="person.ID">
+                                    <option *ngFor="let person of filteredPersonList" [value]="person.FirstName + ', ' + person.LastName">
                                         {{ person.FirstName + ', ' + person.LastName }}
                                     </option>
                                 </datalist>
@@ -144,16 +130,6 @@
             <div>
                 <label for="model" class="bodyInputLabel">Modell</label>
                 <input type="text" id="model" class="input" [(ngModel)]="newDevice.Model">
-            </div>
-
-            <div>
-                <label for="rentStart" class="bodyInputLabel">Verleihstart</label>
-                <input type="date" id="rentStart" class="input" [(ngModel)]="newDevice.RentStart">
-            </div>
-
-            <div>
-                <label for="expectedReturn" class="bodyInputLabel">Verleihende</label>
-                <input type="date" id="expectedReturn" class="input" [(ngModel)]="newDevice.ExpectedReturn">
             </div>
 
             <div>
