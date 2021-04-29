@@ -5,6 +5,7 @@ import { AuthenticationService } from "./service/authentication.service";
 import { ConfigService } from './service/config.service';
 import { LocalStorageService } from './service/local-storage.service';
 import { Config } from './interfaces/config.interface';
+import { ApiService } from './service/api.service';
 
 @Component({
     selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
 
     public title: string = '';
     public currentURL: string = '';
+    public canDeleteAccount: boolean = false;
 
     private routeTitles = [
         { route: "/", title: "Geräteverwaltung" },
@@ -29,11 +31,13 @@ export class AppComponent {
     constructor(
         private router: Router,
         public authService: AuthenticationService,
+        private apiService: ApiService,
         public configService: ConfigService,
         private localStorage: LocalStorageService
     ) { }
 
     public ngOnInit(): void {
+        this.canDeleteAccount = this.localStorage.get('userName').toLowerCase() != 'admin' && this.localStorage.get('userName').toLowerCase() != 'guest';
         this.localStorage.initiateStorage();
         this.router.events.subscribe((event: any) => {
             if (event instanceof NavigationEnd) {
@@ -53,5 +57,15 @@ export class AppComponent {
 
     public logout(): void {
         this.authService.logout();
+    }
+
+    public async deleteAccount(): Promise<void> {
+        try {
+            await this.apiService.deleteUser().toPromise();
+            window.alert('Ihr Account wurde gelöscht, Sie werden auf die Login Seite weitergeleitet.')
+            this.authService.logout();
+        } catch (err) {
+            window.alert('Es gab ein Problem beim Löschen des Accounts.')
+        }
     }
 }

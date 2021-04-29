@@ -54,6 +54,9 @@
                 <a id="cancelButtonPOPUP" [href]="currentURL + '#'">
                     <div class="cancelButton button">Abbrechen</div>
                 </a>
+                <a id="deleteButtonPOPUP" [href]="currentURL + '#'" (click)="deleteAccount()" *ngIf="canDeleteAccount">
+                    <div class="deleteButton button">Account Löschen</div>
+                </a>
                 <a id="saveButtonPOPUP" [href]="currentURL + '#'" (click)="saveConfig()">
                     <div class="saveButton button">Speichern</div>
                 </a>

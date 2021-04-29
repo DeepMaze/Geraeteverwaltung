@@ -1,0 +1,37 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>100</x><y>50</y><w>310</w><h>140</h></coordinates><panel_attributes>AuthenticationService
+--
++ loggedIn: boolean
++ asGuest: boolean
+- localStorage: LocalStorageService
+- apiService: ApiService
+--
+- updateLoggedIn(): void
++ async login(loginData: LoginData): Promise&lt;boolean&gt;
++ logout(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>110</x><y>290</y><w>120</w><h>100</h></coordinates><panel_attributes>LoginData
+--
+userName: string
+passWord: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>50</y><w>310</w><h>350</h></coordinates><panel_attributes>ApiService
+--
+- httpClient: HttpClient
+- localStorage: LocalStorageService
+--
++ getConfig(): Observable&lt;any&gt;
++ saveConfig(config: Config): Observable&lt;any&gt;
++ login(loginData: LoginData): Observable&lt;any&gt;
++ createUser(loginData: LoginData): Observable&lt;any&gt;
++ getDeviceList(): Observable&lt;any&gt;
++ createDevice(device: Device): Observable&lt;any&gt;
++ getDeviceID(device: Device): Observable&lt;any&gt;
++ deleteDevice(deviceID: string): Observable&lt;any&gt;
++ updateDevice(device: Device): Observable&lt;any&gt;
++ getLocationList(): Observable&lt;any&gt;
++ createLocation(location: Location): Observable&lt;any&gt;
++ getLocationID(location: Location): Observable&lt;any&gt;
++ deleteLocation(locationID: string): Observable&lt;any&gt;
++ updateLocation(location: Location): Observable&lt;any&gt;
++ getPersonList(): Observable&lt;any&gt;
++ createPerson(person: Person): Observable&lt;any&gt;
++ getPersonID(person: Person): Observable&lt;any&gt;
++ deletePerson(personID: string): Observable&lt;any&gt;
++ updatePerson(person: Person): Observable&lt;any&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>300</y><w>160</w><h>40</h></coordinates><panel_attributes>LocalStorageService
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>80</y><w>140</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>180</y><w>30</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>180</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element></diagram>

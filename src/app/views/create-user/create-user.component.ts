@@ -26,13 +26,14 @@ export class CreateUserComponent implements OnInit {
         }
     }
 
-    public createUser(): void {
+    public async createUser(): Promise<void> {
         if (this.loginData.userName.toLowerCase() == 'guest' || this.loginData.userName.toLowerCase() == 'admin') {
             window.alert('\'Guest\' und \'Admin\' können nicht als Benutzername gewählt werden.');
             return;
         }
         try {
-            this.apiService.createUser(this.loginData).toPromise();
+            await this.apiService.createUser(this.loginData).toPromise();
+            window.alert('Der Benutzer wurde erstellt!');
         } catch (err) {
             window.alert('Es gab ein Problem beim erstellen eines Benutzers!');
         }

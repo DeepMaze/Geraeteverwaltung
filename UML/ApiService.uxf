@@ -1,0 +1,59 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>147</x><y>144</y><w>310</w><h>350</h></coordinates><panel_attributes>ApiService
+--
+- httpClient: HttpClient
+- localStorage: LocalStorageService
+--
++ getConfig(): Observable&lt;any&gt;
++ saveConfig(config: Config): Observable&lt;any&gt;
++ login(loginData: LoginData): Observable&lt;any&gt;
++ createUser(loginData: LoginData): Observable&lt;any&gt;
++ deleteUser(): Observable&lt;any&gt;
++ getDeviceList(): Observable&lt;any&gt;
++ createDevice(device: Device): Observable&lt;any&gt;
++ getDeviceID(device: Device): Observable&lt;any&gt;
++ deleteDevice(deviceID: string): Observable&lt;any&gt;
++ updateDevice(device: Device): Observable&lt;any&gt;
++ getLocationList(): Observable&lt;any&gt;
++ createLocation(location: Location): Observable&lt;any&gt;
++ getLocationID(location: Location): Observable&lt;any&gt;
++ deleteLocation(locationID: string): Observable&lt;any&gt;
++ updateLocation(location: Location): Observable&lt;any&gt;
++ getPersonList(): Observable&lt;any&gt;
++ createPerson(person: Person): Observable&lt;any&gt;
++ getPersonID(person: Person): Observable&lt;any&gt;
++ deletePerson(personID: string): Observable&lt;any&gt;
++ updatePerson(person: Person): Observable&lt;any&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>144</y><w>270</w><h>40</h></coordinates><panel_attributes>LocalStorageSystem
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>150</x><y>564</y><w>240</w><h>120</h></coordinates><panel_attributes>Config
+--
+enableAccountCreation: boolean
+enableGuestLogin: boolean
+enableGuestDataManipulation: boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>400</x><y>564</y><w>180</w><h>190</h></coordinates><panel_attributes>Device
+--
+ID: number;
+Label: string
+DescriptiveInformation: string
+SerialNumber: string
+Manufacturer: string
+Model: string
+LocationID: number
+PersonID: number</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>590</x><y>564</y><w>180</w><h>160</h></coordinates><panel_attributes>Location
+--
+ID: number
+Label: string
+DescriptiveInformation: string
+Postalcode: string
+City: string
+Street: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>710</x><y>424</y><w>120</w><h>130</h></coordinates><panel_attributes>Person
+--
+ID: number
+FirstName: string
+LastName: string
+Company: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>710</x><y>304</y><w>120</w><h>120</h></coordinates><panel_attributes>UserData
+--
+userID: number
+userName: string
+token: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>710</x><y>204</y><w>120</w><h>100</h></coordinates><panel_attributes>LoginData
+--
+userName: string
+passWord: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>144</y><w>130</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;-
+</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>484</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>484</y><w>190</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;100</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>484</y><w>260</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;240;100</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>434</y><w>340</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;320;10</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>314</y><w>340</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;320;10</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>214</y><w>340</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;320;10</additional_attributes></element></diagram>

@@ -44,8 +44,6 @@ export class DevicesComponent implements OnInit {
             SerialNumber: '',
             Manufacturer: '',
             Model: '',
-            RentStart: '',
-            ExpectedReturn: '',
             LocationID: 0,
             PersonID: 0,
         };
@@ -88,12 +86,6 @@ export class DevicesComponent implements OnInit {
     }
 
     public async createDevice(device: Device): Promise<void> {
-        if (device.RentStart != '') {
-            device.RentStart = this.converDateToYMD(new Date(device.RentStart));
-        }
-        if (device.ExpectedReturn != '') {
-            device.ExpectedReturn = this.converDateToYMD(new Date(device.ExpectedReturn));
-        }
         await this.apiService.createDevice(device).toPromise()
             .then((result: any) => {
                 window.alert('Gerät wurder erstellt!');
@@ -117,12 +109,6 @@ export class DevicesComponent implements OnInit {
         var device: Device = this.mutableFilteredDeviceList.filter((value) => {
             return value.ID == deviceID;
         })[0];
-        if (device.RentStart != '') {
-            device.RentStart = this.converDateToYMD(new Date(device.RentStart));
-        }
-        if (device.ExpectedReturn != '') {
-            device.ExpectedReturn = this.converDateToYMD(new Date(device.ExpectedReturn));
-        }
         this.apiService.updateDevice(device).toPromise()
             .then((result: any) => {
                 window.alert('Änderungen wurde gespeichert!');
@@ -132,37 +118,17 @@ export class DevicesComponent implements OnInit {
             });
     }
 
-    private converDateToYMD(date: Date) {
-        var year: string = date.getFullYear().toString();
-        var month: string = (date.getMonth() + 1).toString();
-        if (month.length == 1) {
-            month = "0" + month;
-        }
-        var day: string = date.getDate().toString();
-        if (day.length == 1) {
-            day = "0" + day;
-        }
-        return `${year}-${month}-${day}`;
-    }
-
     public prepareFilter(event: any): void {
         this.doFilter(event.target.value);
     }
 
     private doFilter(filterValue: string): void {
-        if (filterValue == '') {
-            this.mutableFilteredDeviceList = this.deviceList;
-            return;
-        }
-        var regex: RegExp = new RegExp(`/${filterValue}/i`);
+        var regex: RegExp = new RegExp(`${filterValue}`, 'i');
         this.mutableFilteredDeviceList = this.deviceList.filter((value: any) => {
-            var keys: Array<string> = Object.keys(value);
             var matchAny: boolean = false;
-            for (let index: number = 0; index < keys.length; index++) {
-                matchAny = regex.test(value[keys[index]]);
-                if (matchAny) {
-                    break;
-                }
+            for (var key in value) {
+                matchAny = regex.test(value[key]);
+                if (matchAny) { break; }
             }
             return matchAny;
         })

@@ -1,0 +1,86 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>130</x><y>60</y><w>270</w><h>380</h></coordinates><panel_attributes>DevicesComponent
+--
++ deviceList: Array&lt;Device&gt;
++ mutableFilteredDeviceList: Array&lt;Device&gt;
++ locationList: Array&lt;Location&gt;
++ filteredLocationList: Array&lt;Location&gt;
++ personList: Array&lt;Person&gt;
++ filteredPersonList: Array&lt;Person&gt;
++ filterValue: string
++ newDevice: Device
+- apiService: ApiService
++ authService: AuthenticationService
++ configService: ConfigService
+--       
++ ngOnInit(): void
+- clearDevice(): Device
+- prepareDeviceList(): void
+- prepareLocationList(): void
+- preparePersonList(): void
++ createDevice(device: Device): Promise&lt;void&gt;
++ updateDevice(deviceID: number): void
++ prepareFilter(event: any): void
+- doFilter(filterValue: string): void
++ cancel(index: number): void
++ deleteDevice(deviceID: number): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>130</x><y>500</y><w>180</w><h>190</h></coordinates><panel_attributes>Device
+--
+ID: number;
+Label: string
+DescriptiveInformation: string
+SerialNumber: string
+Manufacturer: string
+Model: string
+LocationID: number
+PersonID: number</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>320</x><y>500</y><w>180</w><h>160</h></coordinates><panel_attributes>Location
+--
+ID: number
+Label: string
+DescriptiveInformation: string
+Postalcode: string
+City: string
+Street: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>510</x><y>240</y><w>120</w><h>130</h></coordinates><panel_attributes>Person
+--
+ID: number
+FirstName: string
+LastName: string
+Company: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>670</x><y>60</y><w>310</w><h>350</h></coordinates><panel_attributes>ApiService
+--
+- httpClient: HttpClient
+- localStorage: LocalStorageService
+--
++ getConfig(): Observable&lt;any&gt;
++ saveConfig(config: Config): Observable&lt;any&gt;
++ login(loginData: LoginData): Observable&lt;any&gt;
++ createUser(loginData: LoginData): Observable&lt;any&gt;
++ getDeviceList(): Observable&lt;any&gt;
++ createDevice(device: Device): Observable&lt;any&gt;
++ getDeviceID(device: Device): Observable&lt;any&gt;
++ deleteDevice(deviceID: string): Observable&lt;any&gt;
++ updateDevice(device: Device): Observable&lt;any&gt;
++ getLocationList(): Observable&lt;any&gt;
++ createLocation(location: Location): Observable&lt;any&gt;
++ getLocationID(location: Location): Observable&lt;any&gt;
++ deleteLocation(locationID: string): Observable&lt;any&gt;
++ updateLocation(location: Location): Observable&lt;any&gt;
++ getPersonList(): Observable&lt;any&gt;
++ createPerson(person: Person): Observable&lt;any&gt;
++ getPersonID(person: Person): Observable&lt;any&gt;
++ deletePerson(personID: string): Observable&lt;any&gt;
++ updatePerson(person: Person): Observable&lt;any&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>670</x><y>440</y><w>310</w><h>140</h></coordinates><panel_attributes>AuthenticationService
+--
++ loggedIn: boolean
++ asGuest: boolean
+- localStorage: LocalStorageService
+- apiService: ApiService
+--
+- updateLoggedIn(): void
++ async login(loginData: LoginData): Promise&lt;boolean&gt;
++ logout(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>670</x><y>600</y><w>210</w><h>130</h></coordinates><panel_attributes>ConfigService
+--
+- config_original: Config
++ config: Config
+- apiService: ApiService
+--
+- getConfigFromDB(): Promise&lt;void&gt;
++ async saveConfig(): Promise&lt;void&gt;
++ restoreConfig(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>100</y><w>300</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;280;10</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>330</y><w>300</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;280;120</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>360</y><w>300</w><h>270</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;280;250</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>250</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;180;10</additional_attributes></element></diagram>

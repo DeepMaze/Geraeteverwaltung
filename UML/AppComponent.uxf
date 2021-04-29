@@ -1,0 +1,32 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>120</x><y>90</y><w>210</w><h>200</h></coordinates><panel_attributes>AppComponent
+--
++ title: string
++ currentURL: string
+- routeTitles: Array&lt;any&gt;
+- router: Router
++ authService: AuthenticationService
++ configService: ConfigService
+- localStorage: LocalStorageService
+--
++ ngOnInit(): void
++ saveConfig(): void
++ logout(): void
++ deleteAccount(): Promise&lt;void&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>90</y><w>310</w><h>140</h></coordinates><panel_attributes>AuthenticationService
+--
++ loggedIn: boolean
++ asGuest: boolean
+- localStorage: LocalStorageService
+- apiService: ApiService
+--
+- updateLoggedIn(): void
++ async login(loginData: LoginData): Promise&lt;boolean&gt;
++ logout(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>260</y><w>310</w><h>130</h></coordinates><panel_attributes>ConfigService
+--
+- config_original: Config
++ config: Config
+- apiService: ApiService
+--
+- getConfigFromDB(): Promise&lt;void&gt;
++ async saveConfig(): Promise&lt;void&gt;
++ restoreConfig(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>320</y><w>210</w><h>40</h></coordinates><panel_attributes>LocalStorageService
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>140</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>260</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>280</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element></diagram>

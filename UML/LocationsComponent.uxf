@@ -1,0 +1,66 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>120</x><y>70</y><w>330</w><h>280</h></coordinates><panel_attributes>LocationsComponent
+--
++ locationList: Array&lt;Location&gt;
++ mutableFilteredLocationList: Array&lt;Location&gt;
++ filterValue: string
++ newLocation: Location
+- apiService: ApiService
++ authService: AuthenticationService
++ configService: ConfigService
+--
++ ngOnInit(): void
+- clearLocation(): Location
+- prepareLocationList(): void
++ async createLocation(location: Location): Promise&lt;void&gt;
++ updateLocation(locationID: number): void
++ prepareFilter(event: any): void
+- doFilter(filterValue: string): void
++ cancel(index: number): void
++ deleteLocation(locationID: number): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>120</x><y>430</y><w>180</w><h>160</h></coordinates><panel_attributes>Location
+--
+ID: number
+Label: string
+DescriptiveInformation: string
+Postalcode: string
+City: string
+Street: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>70</y><w>310</w><h>360</h></coordinates><panel_attributes>ApiService
+--
+- httpClient: HttpClient
+- localStorage: LocalStorageService
+--
++ getConfig(): Observable&lt;any&gt;
++ saveConfig(config: Config): Observable&lt;any&gt;
++ login(loginData: LoginData): Observable&lt;any&gt;
++ createUser(loginData: LoginData): Observable&lt;any&gt;
++ getDeviceList(): Observable&lt;any&gt;
++ createDevice(device: Device): Observable&lt;any&gt;
++ getDeviceID(device: Device): Observable&lt;any&gt;
++ deleteDevice(deviceID: string): Observable&lt;any&gt;
++ updateDevice(device: Device): Observable&lt;any&gt;
++ getLocationList(): Observable&lt;any&gt;
++ createLocation(location: Location): Observable&lt;any&gt;
++ getLocationID(location: Location): Observable&lt;any&gt;
++ deleteLocation(locationID: string): Observable&lt;any&gt;
++ updateLocation(location: Location): Observable&lt;any&gt;
++ getPersonList(): Observable&lt;any&gt;
++ createPerson(person: Person): Observable&lt;any&gt;
++ getPersonID(person: Person): Observable&lt;any&gt;
++ deletePerson(personID: string): Observable&lt;any&gt;
++ updatePerson(person: Person): Observable&lt;any&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>450</y><w>310</w><h>140</h></coordinates><panel_attributes>AuthenticationService
+--
++ loggedIn: boolean
++ asGuest: boolean
+- localStorage: LocalStorageService
+- apiService: ApiService
+--
+- updateLoggedIn(): void
++ async login(loginData: LoginData): Promise&lt;boolean&gt;
++ logout(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>350</x><y>450</y><w>210</w><h>140</h></coordinates><panel_attributes>ConfigService
+--
+- config_original: Config
++ config: Config
+- apiService: ApiService
+--
+- getConfigFromDB(): Promise&lt;void&gt;
++ async saveConfig(): Promise&lt;void&gt;
++ restoreConfig(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>100</y><w>190</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>340</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>340</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>310</y><w>190</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;150</additional_attributes></element></diagram>

@@ -25,7 +25,7 @@ export class LoginComponent {
         try {
             var result: any = await this.authService.login(asGuest ? environment.guestData : this.loginData);
         } catch (err) {
-            window.alert('Es gab ein Problem beim erstellen eines Benutzers!');
+            window.alert('Sie konnten nicht eingeloggt werden. Bitte prüfen Sie Ihre Daten!');
         }
         if (result) {
             this.router.navigateByUrl("/devices");

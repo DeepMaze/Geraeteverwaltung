@@ -1,0 +1,14 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>340</x><y>280</y><w>270</w><h>170</h></coordinates><panel_attributes>StorageService
+--
+- storage: Storage
+- subjects: Map&lt;string, BehaviorSubject&lt;string&gt;&gt;
+--
++ initiateStorage(): void
+- prepareStorage(key: string): any
++ watch(key: string): Observable&lt;any&gt;
++ get(key: string): string
++ set(key: string, value: any): void
++ remove(key: string): void
++ clear(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>140</y><w>270</w><h>40</h></coordinates><panel_attributes>LocalStorageService
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>170</y><w>70</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-
+extends</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element></diagram>

@@ -75,6 +75,18 @@ export class ApiService {
         }
     }
 
+    public deleteUser(): Observable<any> {
+        var httpParams = {
+            token: this.localStorage.get('token'),
+            userID: this.localStorage.get('userID')
+        };
+        try {
+            return this.httpClient.post(`${environment.apiUrl}/user/deleteUser`, { params: httpParams });
+        } catch (err) {
+            throw err;
+        }
+    }
+
     // Device API calls
 
     public getDeviceList(): Observable<any> {

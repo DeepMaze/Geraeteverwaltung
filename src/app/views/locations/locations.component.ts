@@ -90,19 +90,12 @@ export class LocationsComponent implements OnInit {
     }
 
     private doFilter(filterValue: string): void {
-        if (filterValue == '') {
-            this.mutableFilteredLocationList = this.locationList;
-            return;
-        }
-        var regex: RegExp = new RegExp(`/${filterValue}/i`);
+        var regex: RegExp = new RegExp(`${filterValue}`, 'i');
         this.mutableFilteredLocationList = this.locationList.filter((value: any) => {
-            var keys: Array<string> = Object.keys(value);
             var matchAny: boolean = false;
-            for (let index: number = 0; index < keys.length; index++) {
-                matchAny = regex.test(value[keys[index]]);
-                if (matchAny) {
-                    break;
-                }
+            for (var key in value) {
+                matchAny = regex.test(value[key]);
+                if (matchAny) { break; }
             }
             return matchAny;
         })

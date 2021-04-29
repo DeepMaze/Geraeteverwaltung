@@ -7,59 +7,49 @@
             Person</a>
     </div>
 
-    <ng-container *ngIf="mutableFilteredPersonList.length == 0">
-        <div class="body">
-            Es wurden keine Personen gefunden!
-        </div>
-    </ng-container>
+    <div class="scrollWrapper">
+        <ng-container *ngFor="let person of mutableFilteredPersonList; let i = index">
+            <div class="collapsibleWrapper">
+                <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
+                <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ person.FirstName + ' ' +
+                    person.LastName + ' (ID: ' + person.ID + ')' }}</label>
+                <div class="collapsibleContent">
+                    <div class="contentBody">
+                        <div class="body-id">
+                            <label [attr.for]="'ID' + i" class="bodyInputLabel">ID</label>
+                            <input type="text" [attr.id]="'ID' + i" class="input" [ngModel]="person.ID" disabled>
+                        </div>
 
-    <ng-container *ngIf="mutableFilteredPersonList.length != 0">
-        <div class="scrollWrapper">
-            <ng-container *ngFor="let person of mutableFilteredPersonList; let i = index">
-                <div class="collapsibleWrapper">
-                    <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
-                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ person.FirstName + ' ' +
-                        person.LastName + ' (ID: ' + person.ID + ')' }}</label>
-                    <div class="collapsibleContent">
-                        <div class="contentBody">
-                            <div class="body-id">
-                                <label [attr.for]="'ID' + i" class="bodyInputLabel">ID</label>
-                                <input type="text" [attr.id]="'ID' + i" class="input" [ngModel]="person.ID" disabled>
-                            </div>
+                        <div>
+                            <label [attr.for]="'firstName' + i" class="bodyInputLabel">Vorname</label>
+                            <input type="text" [attr.id]="'firstName' + i" class="input" [(ngModel)]="person.FirstName"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div>
-                                <label [attr.for]="'firstName' + i" class="bodyInputLabel">Vorname</label>
-                                <input type="text" [attr.id]="'firstName' + i" class="input"
-                                    [(ngModel)]="person.FirstName"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
+                        <div>
+                            <label [attr.for]="'lastName' + i" class="bodyInputLabel">Nachnamen</label>
+                            <input type="text" [attr.id]="'lastName' + i" class="input" [(ngModel)]="person.LastName"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div>
-                                <label [attr.for]="'lastName' + i" class="bodyInputLabel">Nachnamen</label>
-                                <input type="text" [attr.id]="'lastName' + i" class="input"
-                                    [(ngModel)]="person.LastName"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
+                        <div>
+                            <label [attr.for]="'company' + i" class="bodyInputLabel">Firma</label>
+                            <input type="text" [attr.id]="'company' + i" class="input" [(ngModel)]="person.Company"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div>
-                                <label [attr.for]="'company' + i" class="bodyInputLabel">Firma</label>
-                                <input type="text" [attr.id]="'company' + i" class="input" [(ngModel)]="person.Company"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
-
-                            <div class="bodyActions">
-                                <button class="cancelButton" id="cancelButton" (click)="cancel(i)">Abbrechen</button>
-                                <button class="deleteButton" id="deleteButton" (click)="deletePerson(person.ID)"
-                                    *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Löschen</button>
-                                <button class="saveButton" id="saveButton" (click)="updatePerson(person.ID)"
-                                    *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Ändern</button>
-                            </div>
+                        <div class="bodyActions">
+                            <button class="cancelButton" id="cancelButton" (click)="cancel(i)">Abbrechen</button>
+                            <button class="deleteButton" id="deleteButton" (click)="deletePerson(person.ID)"
+                                *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Löschen</button>
+                            <button class="saveButton" id="saveButton" (click)="updatePerson(person.ID)"
+                                *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Ändern</button>
                         </div>
                     </div>
                 </div>
-            </ng-container>
-        </div>
-    </ng-container>
+            </div>
+        </ng-container>
+    </div>
 </div>
 
 

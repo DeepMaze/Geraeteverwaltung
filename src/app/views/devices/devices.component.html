@@ -7,97 +7,88 @@
             Gerät</a>
     </div>
 
-    <ng-container *ngIf="mutableFilteredDeviceList.length == 0">
-        <div class="body">
-            Es wurden keine Geräte gefunden!
-        </div>
-    </ng-container>
+    <div class="scrollWrapper">
+        <ng-container *ngFor="let device of mutableFilteredDeviceList; let i = index">
+            <div class="collapsibleWrapper">
+                <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
+                <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ device.Label + ' (ID: ' +
+                    device.ID + ')' }}</label>
+                <div class="collapsibleContent">
+                    <div class="contentBody">
+                        <div class="body-id">
+                            <label [attr.for]="'ID' + i" class="bodyInputLabel">ID</label>
+                            <input type="text" [attr.id]="'ID' + i" class="input" [ngModel]="device.ID" disabled>
+                        </div>
 
-    <ng-container *ngIf="mutableFilteredDeviceList.length != 0">
-        <div class="scrollWrapper">
-            <ng-container *ngFor="let device of mutableFilteredDeviceList; let i = index">
-                <div class="collapsibleWrapper">
-                    <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
-                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ device.Label + ' (ID: ' +
-                        device.ID + ')' }}</label>
-                    <div class="collapsibleContent">
-                        <div class="contentBody">
-                            <div class="body-id">
-                                <label [attr.for]="'ID' + i" class="bodyInputLabel">ID</label>
-                                <input type="text" [attr.id]="'ID' + i" class="input" [ngModel]="device.ID" disabled>
-                            </div>
+                        <div class="body-label">
+                            <label [attr.for]="'label' + i" class="bodyInputLabel">Name</label>
+                            <input type="text" [attr.id]="'label' + i" class="input" [(ngModel)]="device.Label"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div class="body-label">
-                                <label [attr.for]="'label' + i" class="bodyInputLabel">Name</label>
-                                <input type="text" [attr.id]="'label' + i" class="input" [(ngModel)]="device.Label"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
+                        <div class="body-desciptiveInformation">
+                            <label [attr.for]="'descriptiveInformation' + i" class="bodyInputLabel">Beschreibung</label>
+                            <input type="text" [attr.id]="'descriptiveInformation' + i" class="input"
+                                [(ngModel)]="device.DescriptiveInformation"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div class="body-desciptiveInformation">
-                                <label [attr.for]="'descriptiveInformation' + i"
-                                    class="bodyInputLabel">Beschreibung</label>
-                                <input type="text" [attr.id]="'descriptiveInformation' + i" class="input"
-                                    [(ngModel)]="device.DescriptiveInformation"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
+                        <div class="body-serialNumber">
+                            <label [attr.for]="'serialNumber' + i" class="bodyInputLabel">Seriennummer</label>
+                            <input type="text" [attr.id]="'serialNumber' + i" class="input"
+                                [(ngModel)]="device.SerialNumber"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div class="body-serialNumber">
-                                <label [attr.for]="'serialNumber' + i" class="bodyInputLabel">Seriennummer</label>
-                                <input type="text" [attr.id]="'serialNumber' + i" class="input"
-                                    [(ngModel)]="device.SerialNumber"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
+                        <div class="body-manufacturer">
+                            <label [attr.for]="'manufacturer' + i" class="bodyInputLabel">Hersteller</label>
+                            <input type="text" [attr.id]="'manufacturer' + i" class="input"
+                                [(ngModel)]="device.Manufacturer"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div class="body-manufacturer">
-                                <label [attr.for]="'manufacturer' + i" class="bodyInputLabel">Hersteller</label>
-                                <input type="text" [attr.id]="'manufacturer' + i" class="input"
-                                    [(ngModel)]="device.Manufacturer"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
+                        <div class="body-manufacturer">
+                            <label [attr.for]="'model' + i" class="bodyInputLabel">Modell</label>
+                            <input type="text" [attr.id]="'model' + i" class="input" [(ngModel)]="device.Model"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div class="body-manufacturer">
-                                <label [attr.for]="'model' + i" class="bodyInputLabel">Modell</label>
-                                <input type="text" [attr.id]="'model' + i" class="input" [(ngModel)]="device.Model"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
+                        <div class="body-locationID">
+                            <label [attr.for]="'locationID' + i" class="bodyInputLabel">Standort</label>
+                            <input type="text" [attr.list]="'locations' + i" [attr.id]="'locationID' + i" class="input"
+                                [(ngModel)]="device.LocationID"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                            <datalist [attr.id]="'locations' + i">
+                                <option *ngFor="let location of filteredLocationList" [value]="location.ID">
+                                    {{ location.Label }}
+                                </option>
+                            </datalist>
+                        </div>
 
-                            <div class="body-locationID">
-                                <label [attr.for]="'locationID' + i" class="bodyInputLabel">Standort</label>
-                                <input type="text" [attr.list]="'locations' + i" [attr.id]="'locationID' + i"
-                                    class="input" [(ngModel)]="device.LocationID"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                                <datalist [attr.id]="'locations' + i">
-                                    <option *ngFor="let location of filteredLocationList" [value]="location.Label">
-                                        {{ location.Label }}
-                                    </option>
-                                </datalist>
-                            </div>
+                        <div class="body-personID">
+                            <label [attr.for]="'personID' + i" class="bodyInputLabel">Person</label>
+                            <input type="text" [attr.list]="'persons' + i" [attr.id]="'personID' + i" class="input"
+                                [(ngModel)]="device.PersonID"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                            <datalist [attr.id]="'persons' + i">
+                                <option *ngFor="let person of filteredPersonList" [value]="person.ID">
+                                    {{ person.FirstName + ', ' + person.LastName }}
+                                </option>
+                            </datalist>
+                        </div>
 
-                            <div class="body-personID">
-                                <label [attr.for]="'personID' + i" class="bodyInputLabel">Person</label>
-                                <input type="text" [attr.list]="'persons' + i" [attr.id]="'personID' + i" class="input"
-                                    [(ngModel)]="device.PersonID"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                                <datalist [attr.id]="'persons' + i">
-                                    <option *ngFor="let person of filteredPersonList" [value]="person.FirstName + ', ' + person.LastName">
-                                        {{ person.FirstName + ', ' + person.LastName }}
-                                    </option>
-                                </datalist>
-                            </div>
-
-                            <div class="bodyActions">
-                                <button class="cancelButton" id="cancelButton" (click)="cancel(i)">Abbrechen</button>
-                                <button class="deleteButton" id="deleteButton"
-                                    (click)="deleteDevice(device.ID)" *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Löschen</button>
-                                <button class="saveButton" id="saveButton"
-                                    (click)="updateDevice(device.ID)" *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Ändern</button>
-                            </div>
+                        <div class="bodyActions">
+                            <button class="cancelButton" id="cancelButton" (click)="cancel(i)">Abbrechen</button>
+                            <button class="deleteButton" id="deleteButton" (click)="deleteDevice(device.ID)"
+                                *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Löschen</button>
+                            <button class="saveButton" id="saveButton" (click)="updateDevice(device.ID)"
+                                *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Ändern</button>
                         </div>
                     </div>
                 </div>
-            </ng-container>
-        </div>
-    </ng-container>
+            </div>
+        </ng-container>
+    </div>
 </div>
 
 

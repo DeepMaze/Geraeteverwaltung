@@ -24,7 +24,7 @@ export class PersonsComponent implements OnInit {
         public authService: AuthenticationService,
         public configService: ConfigService) { }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.preparePersonList();
     }
 
@@ -88,19 +88,12 @@ export class PersonsComponent implements OnInit {
     }
 
     private doFilter(filterValue: string): void {
-        if (filterValue == '') {
-            this.mutableFilteredPersonList = this.personList;
-            return;
-        }
-        var regex: RegExp = new RegExp(`/${filterValue}/i`);
+        var regex: RegExp = new RegExp(`${filterValue}`, 'i');
         this.mutableFilteredPersonList = this.personList.filter((value: any) => {
-            var keys: Array<string> = Object.keys(value);
             var matchAny: boolean = false;
-            for (let index: number = 0; index < keys.length; index++) {
-                matchAny = regex.test(value[keys[index]]);
-                if (matchAny) {
-                    break;
-                }
+            for (var key in value) {
+                matchAny = regex.test(value[key]);
+                if (matchAny) { break; }
             }
             return matchAny;
         })

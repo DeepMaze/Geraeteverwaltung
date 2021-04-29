@@ -7,73 +7,64 @@
             Standort</a>
     </div>
 
-    <ng-container *ngIf="mutableFilteredLocationList.length == 0">
-        <div class="body">
-            Es wurden keine Standorte gefunden!
-        </div>
-    </ng-container>
+    <div class="scrollWrapper">
+        <ng-container *ngFor="let location of mutableFilteredLocationList; let i = index">
+            <div class="collapsibleWrapper">
+                <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
+                <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ location.Label + ' (ID: '
+                    +
+                    location.ID + ')' }}</label>
+                <div class="collapsibleContent">
+                    <div class="contentBody">
+                        <div class="body-id">
+                            <label [attr.for]="'ID' + i" class="bodyInputLabel">ID</label>
+                            <input type="text" [attr.id]="'ID' + i" class="input" [ngModel]="location.ID" disabled>
+                        </div>
 
-    <ng-container *ngIf="mutableFilteredLocationList.length != 0">
-        <div class="scrollWrapper">
-            <ng-container *ngFor="let location of mutableFilteredLocationList; let i = index">
-                <div class="collapsibleWrapper">
-                    <input [attr.id]="'collapsibleCheckbox_' + i" class="collapsibleToggle" type="checkbox">
-                    <label [attr.for]="'collapsibleCheckbox_' + i" class="collapsibleLabel">{{ location.Label + ' (ID: '
-                        +
-                        location.ID + ')' }}</label>
-                    <div class="collapsibleContent">
-                        <div class="contentBody">
-                            <div class="body-id">
-                                <label [attr.for]="'ID' + i" class="bodyInputLabel">ID</label>
-                                <input type="text" [attr.id]="'ID' + i" class="input" [ngModel]="location.ID" disabled>
-                            </div>
+                        <div>
+                            <label [attr.for]="'label' + i" class="bodyInputLabel">Name</label>
+                            <input type="text" [attr.id]="'label' + i" class="input" [(ngModel)]="location.Label"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div>
-                                <label [attr.for]="'label' + i" class="bodyInputLabel">Name</label>
-                                <input type="text" [attr.id]="'label' + i" class="input" [(ngModel)]="location.Label"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
+                        <div>
+                            <label [attr.for]="'descriptiveInformation' + i" class="bodyInputLabel">Beschreibung</label>
+                            <input type="text" [attr.id]="'descriptiveInformation' + i" class="input"
+                                [(ngModel)]="location.DescriptiveInformation"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div>
-                                <label [attr.for]="'descriptiveInformation' + i"
-                                    class="bodyInputLabel">Beschreibung</label>
-                                <input type="text" [attr.id]="'descriptiveInformation' + i" class="input"
-                                    [(ngModel)]="location.DescriptiveInformation"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
+                        <div>
+                            <label [attr.for]="'postalcode' + i" class="bodyInputLabel">PLZ</label>
+                            <input type="text" [attr.id]="'postalcode' + i" class="input"
+                                [(ngModel)]="location.Postalcode"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div>
-                                <label [attr.for]="'postalcode' + i" class="bodyInputLabel">PLZ</label>
-                                <input type="text" [attr.id]="'postalcode' + i" class="input"
-                                    [(ngModel)]="location.Postalcode"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
+                        <div>
+                            <label [attr.for]="'city' + i" class="bodyInputLabel">Stadt</label>
+                            <input type="text" [attr.id]="'city' + i" class="input" [(ngModel)]="location.City"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div>
-                                <label [attr.for]="'city' + i" class="bodyInputLabel">Stadt</label>
-                                <input type="text" [attr.id]="'city' + i" class="input" [(ngModel)]="location.City"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
+                        <div>
+                            <label [attr.for]="'street' + i" class="bodyInputLabel">Straße</label>
+                            <input type="text" [attr.id]="'street' + i" class="input" [(ngModel)]="location.Street"
+                                [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
+                        </div>
 
-                            <div>
-                                <label [attr.for]="'street' + i" class="bodyInputLabel">Straße</label>
-                                <input type="text" [attr.id]="'street' + i" class="input" [(ngModel)]="location.Street"
-                                    [disabled]="!!authService.asGuest && !configService.config.enableGuestDataManipulation">
-                            </div>
-
-                            <div class="bodyActions">
-                                <button class="cancelButton" id="cancelButton" (click)="cancel(i)">Abbrechen</button>
-                                <button class="deleteButton" id="deleteButton" (click)="deleteLocation(location.ID)"
-                                    *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Löschen</button>
-                                <button class="saveButton" id="saveButton" (click)="updateLocation(location.ID)"
-                                    *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Ändern</button>
-                            </div>
+                        <div class="bodyActions">
+                            <button class="cancelButton" id="cancelButton" (click)="cancel(i)">Abbrechen</button>
+                            <button class="deleteButton" id="deleteButton" (click)="deleteLocation(location.ID)"
+                                *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Löschen</button>
+                            <button class="saveButton" id="saveButton" (click)="updateLocation(location.ID)"
+                                *ngIf="!authService.asGuest || !!authService.asGuest && !!configService.config.enableGuestDataManipulation">Ändern</button>
                         </div>
                     </div>
                 </div>
-            </ng-container>
-        </div>
-    </ng-container>
+            </div>
+        </ng-container>
+    </div>
 </div>
 
 

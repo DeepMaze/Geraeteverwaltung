@@ -1,0 +1,44 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>260</x><y>170</y><w>230</w><h>140</h></coordinates><panel_attributes>CreateUserComponent
+--
++ loginData: LoginData
+- router: Router
+- configService: ConfigService,
+- apiService: ApiService
+--
++ ngOnInit(): void
++ createUser(): Promise&lt;void&gt;
++ routeTo(routerLink: string): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>360</y><w>210</w><h>130</h></coordinates><panel_attributes>ConfigService
+--
+- config_original: Config
++ config: Config
+- apiService: ApiService
+--
+- getConfigFromDB(): Promise&lt;void&gt;
++ async saveConfig(): Promise&lt;void&gt;
++ restoreConfig(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>170</y><w>310</w><h>350</h></coordinates><panel_attributes>ApiService
+--
+- httpClient: HttpClient
+- localStorage: LocalStorageService
+--
++ getConfig(): Observable&lt;any&gt;
++ saveConfig(config: Config): Observable&lt;any&gt;
++ login(loginData: LoginData): Observable&lt;any&gt;
++ createUser(loginData: LoginData): Observable&lt;any&gt;
++ getDeviceList(): Observable&lt;any&gt;
++ createDevice(device: Device): Observable&lt;any&gt;
++ getDeviceID(device: Device): Observable&lt;any&gt;
++ deleteDevice(deviceID: string): Observable&lt;any&gt;
++ updateDevice(device: Device): Observable&lt;any&gt;
++ getLocationList(): Observable&lt;any&gt;
++ createLocation(location: Location): Observable&lt;any&gt;
++ getLocationID(location: Location): Observable&lt;any&gt;
++ deleteLocation(locationID: string): Observable&lt;any&gt;
++ updateLocation(location: Location): Observable&lt;any&gt;
++ getPersonList(): Observable&lt;any&gt;
++ createPerson(person: Person): Observable&lt;any&gt;
++ getPersonID(person: Person): Observable&lt;any&gt;
++ deletePerson(personID: string): Observable&lt;any&gt;
++ updatePerson(person: Person): Observable&lt;any&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>260</x><y>360</y><w>120</w><h>100</h></coordinates><panel_attributes>LoginData
+--
+userName: string
+passWord: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>300</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>300</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>210</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element></diagram>
