@@ -46,18 +46,18 @@ export class PersonsComponent implements OnInit {
                 }
             })
             .catch((err: any) => {
-                window.alert('Standort Liste konnte nicht abgefragt werden!')
+                window.alert('Personen Liste konnte nicht abgefragt werden!')
             });
     }
 
     public async createPerson(person: Person): Promise<void> {
         await this.apiService.createPerson(person).toPromise()
             .then((result: any) => {
-                window.alert('Standort wurder erstellt!');
+                window.alert('Person wurder erstellt!');
                 this.newPerson = this.clearPerson();
             })
             .catch((err: any) => {
-                window.alert('Standort konnte nicht erstellt werden!')
+                window.alert('Person konnte nicht erstellt werden!')
             });
         await this.apiService.getPersonID(person).toPromise()
             .then((result: any) => {
@@ -66,7 +66,7 @@ export class PersonsComponent implements OnInit {
                 this.doFilter(this.filterValue);
             })
             .catch((err: any) => {
-                window.alert('Standort konnte nicht erstellt werden!')
+                window.alert('Person konnte nicht erstellt werden!')
             });
     }
 
@@ -109,7 +109,7 @@ export class PersonsComponent implements OnInit {
     public deletePerson(personID: number): void {
         this.apiService.deletePerson(personID.toString()).toPromise()
             .then((result: any) => {
-                window.alert('Standort wurde gelöscht!');
+                window.alert('Person wurde gelöscht!');
                 var index: number;
                 index = this.personList.findIndex((value: Person) => { return value.ID == personID; });
                 if (index != -1) { this.personList.splice(index, 1); }
@@ -118,7 +118,7 @@ export class PersonsComponent implements OnInit {
 
             })
             .catch((err: any) => {
-                window.alert('Standort konnte nicht gelöscht werden!')
+                window.alert('Person konnte nicht gelöscht werden!')
             });
     }
 }
