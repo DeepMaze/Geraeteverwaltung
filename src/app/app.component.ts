@@ -42,7 +42,9 @@ export class AppComponent {
         this.router.events.subscribe((event: any) => {
             if (event instanceof NavigationEnd) {
                 this.currentURL = event.url.split('#')[0];
-                let newTitle = this.routeTitles.find(route => { return route.route === event.url }) || { title: "undefined" };
+                let newTitle = this.routeTitles.find(route => {
+                    return route.route === event.url.split("#")[0]
+                }) || { title: "undefined" };
                 this.title = newTitle.title;
                 if (event.url.split('#').length >= 2 && this.authService.asGuest && !this.configService.config.enableGuestDataManipulation) {
                     this.router.navigateByUrl(this.currentURL);
